@@ -1,1 +1,3 @@
-coucou
+httpClient
+
+http.get(${{environment.apiUrl}}+/..)
