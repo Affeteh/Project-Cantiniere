@@ -1,6 +1,6 @@
 export class User {
 
-    id: number;
+    id?: number;
     address: string;
     wallet: number;
     postalCode: string;
@@ -16,24 +16,22 @@ export class User {
     imageId: number;
 
   constructor(
-
-    id: number = 0,
-    address: string = '',
-    wallet: number = 0,
-    postalCode: string = '',
-    registrationDate: string = '',
-    email: string = '',
+    address: string ,
+    wallet: number,
+    postalCode: string ,
+    registrationDate: string ,
+    email: string ,
     isLunchLady: boolean,
-    name: string = '',
-    firstname: string = '',
-    phone: string = '',
-    town: string = '',
-    sex: number = 0,
-    status: number = 0,
-    imageId: number = 0
+    name: string ,
+    firstname: string ,
+    phone: string ,
+    town: string ,
+    sex: number,
+    status: number,
+    imageId: number,
+    id?: number,
     ){
-  
-     this.id = id;
+
      this.address = address;
      this.wallet = wallet;
      this.postalCode = postalCode;
@@ -46,8 +44,9 @@ export class User {
      this.town = town;
      this.sex = sex;
      this.status = status;
-     this.imageId = imageId
+     this.imageId = imageId;
+     this.id = id;
 
     }
-  
+
   }

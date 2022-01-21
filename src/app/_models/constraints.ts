@@ -16,9 +16,9 @@ export class Constraints {
 
     maximumOrderPerDay: number,
 
-    rateVAT	:number,
+    rateVAT: number,
 
-    id : number
+    id?: number
 
   ){
     this.orderTimeLimit = orderTimeLimit ;

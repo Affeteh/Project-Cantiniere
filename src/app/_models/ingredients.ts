@@ -8,7 +8,7 @@ export class Ingredients {
 
   status: number;
 
-  imageId:number[] ;
+  imageId:number ;
 
 
 
@@ -19,7 +19,7 @@ export class Ingredients {
 
       status: number,
 
-      imageId: number[],
+      imageId: number,
 
       id?: number
       ){
