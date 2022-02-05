@@ -1,0 +1,35 @@
+<button type="button" class="btn btn-light" (click)="addMenu()">Add new Menu</button>
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Label</th>
+          <th>Weeks</th>
+          <th>price</th>
+          <th>options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let menu of menus">
+          <th>{{menu.label}}</th>
+          <th>{{menu.availableForWeeks}}</th>
+          <th>{{menu.priceDf}}</th>
+          <th>
+            <div>
+              <button type="button" class="btn btn-danger">Delete</button>
+              <button type="button" class="btn btn-warning">Edit</button>
+              <button type="button" class="btn btn-light">View</button>
+            </div>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-4 " *ngIf="shownAdd">
+    Add new menu
+  </div>
+</div>
+
+
