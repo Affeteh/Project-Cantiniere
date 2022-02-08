@@ -11,6 +11,7 @@ export class Menu {
   availableForWeeks: number[];
   meals : Meals[]
 
+
   constructor(description: string, label: string, status: number, imageId:number, priceDf: number,availableForWeeks: number[], meals: Meals[], id?: number){
     this.description=description;
     this.label=label;

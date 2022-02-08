@@ -1,35 +1,82 @@
-<button type="button" class="btn btn-light" (click)="addMenu()">Add new Menu</button>
-<div class="row">
-  <div class="col-md-6">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Label</th>
-          <th>Weeks</th>
-          <th>price</th>
-          <th>options</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let menu of menus">
-          <th>{{menu.label}}</th>
-          <th>{{menu.availableForWeeks}}</th>
-          <th>{{menu.priceDf}}</th>
-          <th>
-            <div>
-              <button type="button" class="btn btn-danger">Delete</button>
-              <button type="button" class="btn btn-warning">Edit</button>
-              <button type="button" class="btn btn-light">View</button>
-            </div>
-          </th>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<!-- Button trigger add menu modal -->
+ <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMenuModal">
+  Add new Menu
+</button>
 
-  <div class="col-md-4 " *ngIf="shownAdd">
-    Add new menu
+<!-- Add Menu Modal -->
+<div class="modal fade" id="addMenuModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="addMenuModalTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addMenuModalTitle">New Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="">
+          <span aria-hidden="true" hidden>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <div class="form-group">
+            <label for="label">Label</label>
+            <input type="text" class="form-control"  id="label">
+            <label for="description">Description</label>
+            <input type="text" class="form-control"  id="description">
+            <div class="row">
+              <label for="weeks">Weeks</label>
+              <span *ngFor="let week of weeks" class="form-check col sm-1">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" [value]="week">
+                <label class="form-check-label" for="inlineCheckbox1">{{week}}</label>
+              </span>
+            </div>
+            <label for="image">Picture</label>
+            <input type="text" id="image" class="form-control">
+            <label for="price" >Price</label>
+            <input type="number" class="form-control" id="price">
+            <div>
+              <label for="meals">Meals</label>
+              <span *ngFor="let meal of meals" class="form-check">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" [value]="meal.id">
+                <label class="form-check-label" for="inlineCheckbox1">{{meal.label}}</label>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
+      </div>
+    </div>
   </div>
 </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Label</th>
+            <th>Weeks</th>
+            <th>price</th>
+            <th>options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let menu of menus">
+            <th>{{menu.label}}</th>
+            <th>{{menu.availableForWeeks}}</th>
+            <th>{{menu.priceDf}}</th>
+            <th>
+              <div>
+                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-warning">Edit</button>
+                <button type="button" class="btn btn-light">View</button>
+              </div>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 
 
