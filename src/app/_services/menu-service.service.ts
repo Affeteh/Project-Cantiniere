@@ -16,11 +16,11 @@ export class MenuServiceService {
   constructor(private httpClient: HttpClient) { }
 
   getAllMenus(): Observable<Menu[]>{
-    return this.httpClient.get<Menu[]>(this.url+"/findall");
+    return this.httpClient.get<Menu[]>(`${this.url}/findall`);
   }
 
   getMenusForToday():Observable<Menu[]>{
-    return this.httpClient.get<Menu[]>(this.url+"/findallavailablefortoday");
+    return this.httpClient.get<Menu[]>(`${this.url}/findallavailablefortoday`);
   }
 
   getMenusForTheWeek(weekNumber: Number):Observable<Menu[]>{
@@ -31,9 +31,13 @@ export class MenuServiceService {
     return this.httpClient.get<Image>(`${this.url}/findimg/${imgId}`);
   }
 
+  getMenuById(id:number): Observable<Menu>{
+    return this.httpClient.get<Menu>(`${this.url}/find/${id}`);
+  }
+
   addMenu(menu: Menu){
     const httpHeaderOption={headers:new HttpHeaders({'Content-Type':'application/json'})};
-    return this.httpClient.post<Menu>(this.url+"/add",menu,httpHeaderOption);
+    return this.httpClient.put<Menu>(`${this.url}/add`,menu,httpHeaderOption);
   }
 
 

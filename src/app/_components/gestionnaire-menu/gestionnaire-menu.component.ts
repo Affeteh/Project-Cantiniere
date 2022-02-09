@@ -15,6 +15,7 @@ export class GestionnaireMenuComponent implements OnInit {
   weeks: Number[]=[]
   meals: Meals[]=[]
 
+  @Input() menu: Menu =new Menu("","",0,0,0,[],[]) ;
 
   constructor(private menuService: MenuServiceService, private mealService: MealsService) { }
 
@@ -30,5 +31,29 @@ export class GestionnaireMenuComponent implements OnInit {
 
   }
 
-  onSubmit(form: NgForm){}
+  pushWeek(event:any){
+   if(event.target.checked==true){
+     this.menu.availableForWeeks.push(event.target.value);
+   }
+  }
+  pushMeal(event:any){
+    if(event.target.checked==true){
+      this.mealService.getMeal(event.target.value).subscribe(data=>{this.menu.meals.push(data)});
+    }
+  }
+  
+  onSubmit(form: NgForm){
+    console.log(this.menu);
+    this.menuService.addMenu(this.menu).subscribe(result=>{
+      this.menu=result;
+      document.location.reload();
+    });
+  }
+
+  delete(id :number){
+    this.menuService.getMenuById(id).subscribe(data=>{
+      this.menu=data;
+      this.menuService.deleteMenu(this.menu).subscribe(_=>document.location.reload());
+    });
+  }
 }

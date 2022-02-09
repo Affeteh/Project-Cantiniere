@@ -16,9 +16,12 @@ export class MealsService {
 
 
   getAllMeals(): Observable<Meals[]>{
-    return this.httpClient.get<Meals[]>(this.url+"/findall");
+    return this.httpClient.get<Meals[]>(`${this.url}/findall`);
   }
 
+  getMeal(id:number):Observable<Meals>{
+    return this.httpClient.get<Meals>(`${this.url}/find/${id}`);
+  }
   getMenuImg(imgId:number):Observable<Image>{
     return this.httpClient.get<Image>(`${this.url}/findimg/${imgId}`);
   }
