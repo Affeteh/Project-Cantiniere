@@ -8,6 +8,11 @@ import { GestionUserComponent } from './_components/gestion-user/gestion-user.co
 import { GestionnaireMenuComponent } from './_components/gestionnaire-menu/gestionnaire-menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AddMenuModalComponent } from './_components/add-menu-modal/add-menu-modal.component';
+import { DeleteMenuModalComponent } from './_components/delete-menu-modal/delete-menu-modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DetailMenuComponent } from './_components/detail-menu/detail-menu.component';
+import { EditMenuComponent } from './_components/edit-menu/edit-menu.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +20,18 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     ProfilComponent,
     GestionUserComponent,
-    GestionnaireMenuComponent
+    GestionnaireMenuComponent,
+    AddMenuModalComponent,
+    DeleteMenuModalComponent,
+    DetailMenuComponent,
+    EditMenuComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

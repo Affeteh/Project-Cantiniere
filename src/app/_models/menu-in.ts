@@ -1,6 +1,4 @@
-import { Meals } from "./meals";
-
-export class Menu {
+export class MenuIn {
 
   id: number;
   description: string;
@@ -9,19 +7,17 @@ export class Menu {
   imageId: number;
   priceDF:number;
   availableForWeeks: number[];
-  meals : Meals[]
+  mealIds : number[]
 
 
-  constructor(description: string, label: string, status: number, imageId:number, priceDf: number,availableForWeeks: number[], meals: Meals[], id: number=0){
+  constructor(description: string, label: string, status: number=0, imageId:number=0, priceDf: number,availableForWeeks: number[], meals: number[], id: number=0){
     this.description=description;
     this.label=label;
     this.status=status;
     this.imageId=imageId;
     this.priceDF=priceDf;
     this.availableForWeeks=availableForWeeks;
-    this.meals=meals;
+    this.mealIds=meals;
     this.id=id;
   }
-
-
 }

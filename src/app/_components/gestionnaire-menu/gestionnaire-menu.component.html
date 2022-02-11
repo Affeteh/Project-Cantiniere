@@ -1,54 +1,12 @@
+<app-add-menu-modal></app-add-menu-modal>
 <!-- Button trigger add menu modal -->
-
-
-<!-- Add Menu Modal -->
-<div class="modal fade" id="addMenuModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="addMenuModalTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addMenuModalTitle">New Menu</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="">
-          <span aria-hidden="true" hidden>&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-          <div class="form-group">
-            <label for="label">Label</label>
-            <input type="text" class="form-control" [(ngModel)]="menu.label" id="label" name="label" #label="ngModel">
-            <label for="description">Description</label>
-            <input type="text" class="form-control" [(ngModel)]="menu.description" id="description" name="description" #description="ngModel">
-            <div class="row" >
-              <label for="weeks">Weeks</label>
-              <span *ngFor="let week of weeks" id="weeks" class=" form-check col sm-2" style="display: flex; flex-direction: column;align-items: center; margin:0 2% 0 2%;">
-                <input class="form-control form-check-input" type="checkbox" id="week" (change)="pushWeek($event)" [value]="week">
-                <label class="form-check-label" for="week">{{week}}</label>
-              </span>
-            </div>
-            <label for="price" >Price</label>
-            <input type="number" class="form-control" [(ngModel)]="menu.priceDF" name="price" #price="ngModel" id="price">
-            <div>
-              <label for="meals">Meals</label>
-              <span *ngFor="let meal of meals" class="form-check">
-                <input class="form-control form-check-input" type="checkbox" id="inlineCheckbox1" (change)="pushMeal($event)" [value]="meal.id">
-                <label class="form-check-label" for="inlineCheckbox1">{{meal.label}}</label>
-              </span>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 <div class="container">
   <button type="button" class="btn btn-secondary btn-md" style="border-radius:48%; background-color: tan;" data-bs-toggle="modal" id="addButton" data-bs-target="#addMenuModal">
     <img src="../../../assets/icons/add.svg"id="addImg" alt="">
   </button>
+  <!--Menus -->
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-10" id="menuTable">
       <table class="table table-hover">
         <thead>
           <tr>
@@ -59,20 +17,27 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let menu of menus">
+          <tr *ngFor="let menu of menus | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
             <th>{{menu.label}}</th>
             <th>{{menu.availableForWeeks}}</th>
             <th>{{menu.priceDF}}</th>
             <th>
               <div>
                 <button type="button" class="btn btn-danger btn-sm" (click)="delete(menu.id)"><img src="../../../assets/icons/trash.svg" alt="trash"></button>
-                <button type="button" class="btn btn-primary btn-sm"><img src="../../../assets/icons/edit-button.svg" alt=""></button>
-                <button type="button" class="btn btn-info btn-sm"><img src="../../../assets/icons/details.svg" alt=""></button>
+                <button type="button" class="btn btn-primary btn-sm" (click)="openEdition(menu.id)" id="editButton" ><img src="../../../assets/icons/edit-button.svg" alt=""></button>
+                <button type="button" class="btn btn-info btn-sm" (click)="showDetail(menu.id)"><img src="../../../assets/icons/details.svg" alt=""></button>
               </div>
             </th>
           </tr>
         </tbody>
       </table>
+      <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshMenus()"></ngb-pagination>
+    </div>
+    <div class="col-md-6" *ngIf="shownDetail">
+      <app-detail-menu [menuId]="menuId"></app-detail-menu>
+    </div>
+    <div class="col-md-6" *ngIf="openEdit">
+      <app-edit-menu [menuId]="menuId"></app-edit-menu>
     </div>
   </div>
 </div>

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Menu } from '../_models/menu';
 import { Observable } from 'rxjs';
 import { Image } from '../_models/image';
+import { MenuIn } from '../_models/menu-in';
 
 @Injectable({
   providedIn: 'root'
@@ -35,15 +36,15 @@ export class MenuServiceService {
     return this.httpClient.get<Menu>(`${this.url}/find/${id}`);
   }
 
-  addMenu(menu: Menu){
+  addMenu(menu: MenuIn){
     const httpHeaderOption={headers:new HttpHeaders({'Content-Type':'application/json'})};
-    return this.httpClient.put<Menu>(`${this.url}/add`,menu,httpHeaderOption);
+    return this.httpClient.put<MenuIn>(`${this.url}/add`,menu,httpHeaderOption);
   }
 
 
-  updateMenu(menu:Menu){
+  updateMenu(menu:MenuIn){
     const httpHeaderOption={headers:new HttpHeaders({'Content-Type':'application/json'})};
-    return this.httpClient.patch<Menu>(`${this.url}/update/${menu.id}`,menu,httpHeaderOption);
+    return this.httpClient.patch<MenuIn>(`${this.url}/update/${menu.id}`,menu,httpHeaderOption);
   }
 
   deleteMenu(menu:Menu){

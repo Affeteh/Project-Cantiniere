@@ -2,7 +2,7 @@ import { Ingredients } from "./ingredients";
 
 export class Meals {
 
-  id?: number;
+  id: number;
   description: string;
   label: string;
   status: number;
@@ -21,7 +21,7 @@ export class Meals {
     availableForWeeks:number[],
     category: number,
     ingredients: Ingredients[],
-    id?:number){
+    id:number=0){
 
       this.description=description;
       this.label=label;

@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Meals } from 'src/app/_models/meals';
 import { Menu } from 'src/app/_models/menu';
 import { MealsService } from 'src/app/_services/meals.service';
 import { MenuServiceService } from 'src/app/_services/menu-service.service';
+
+
 @Component({
   selector: 'app-gestionnaire-menu',
   templateUrl: './gestionnaire-menu.component.html',
@@ -12,16 +14,28 @@ import { MenuServiceService } from 'src/app/_services/menu-service.service';
 export class GestionnaireMenuComponent implements OnInit {
 
   menus: Menu[]=[];
-  weeks: Number[]=[]
+  weeks: number[]=[]
   meals: Meals[]=[]
-
+  page: number=0;
+  pageSize: number=0;
+  collectionSize: number=0;
+  shownDetail: boolean =false;
+  openEdit:boolean=false;
+  menuId:number=0;
+  display:string='none';
   @Input() menu: Menu =new Menu("","",0,0,0,[],[]) ;
 
-  constructor(private menuService: MenuServiceService, private mealService: MealsService) { }
+
+  constructor(private menuService: MenuServiceService, private mealService: MealsService,private modalService:NgbModal) { }
 
 
   ngOnInit(): void {
-    this.menuService.getAllMenus().subscribe(result=>this.menus=result);
+    this.menuService.getAllMenus().subscribe(result=>{
+      this.menus=result;
+      this.collectionSize=this.menus.length;
+      this.page=1;
+      this.pageSize=10;
+    });
 
     this.mealService.getAllMeals().subscribe(result=>this.meals=result);
 
@@ -29,25 +43,38 @@ export class GestionnaireMenuComponent implements OnInit {
       this.weeks.push(i);
     };
 
+
+    this.refreshMenus();
+
   }
 
-  pushWeek(event:any){
-   if(event.target.checked==true){
-     this.menu.availableForWeeks.push(event.target.value);
-   }
+
+  refreshMenus(){
+    this.menus.slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
   }
-  pushMeal(event:any){
-    if(event.target.checked==true){
-      this.mealService.getMeal(event.target.value).subscribe(data=>{this.menu.meals.push(data)});
+
+  showDetail(id:number){
+    this.shownDetail=!this.shownDetail;
+    this.menuId=id;
+    this.moveTable(this.shownDetail);
+
+  }
+
+  moveTable(parameter:boolean){
+    let table=document.querySelector('#menuTable');
+    if(parameter){
+      table?.classList.remove('col-md-10');
+      table?.classList.add('col-md-6');
+    }else{
+      table?.classList.remove('col-md-6');
+      table?.classList.add('col-md-10');
     }
   }
-  
-  onSubmit(form: NgForm){
-    console.log(this.menu);
-    this.menuService.addMenu(this.menu).subscribe(result=>{
-      this.menu=result;
-      document.location.reload();
-    });
+
+  openEdition(id:number){
+    this.openEdit=!this.openEdit;
+    this.menuId=id;
+    this.moveTable(this.openEdit);
   }
 
   delete(id :number){

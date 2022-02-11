@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>{{menu.label}}</h1>
+  <h4>Price : {{menu.priceDF}} € </h4>
+  <h5>Available for Weeks : {{menu.availableForWeeks}}</h5>
+  <div class="card" style="width: 20rem;">
+    <div class="card-header">
+      Meals :
+    </div>
+    <ul class="list-group list-group-flush">
+      <li *ngFor="let meal of menu.meals" class="list-group-item"><label for="imgMeal">{{meal.label}}</label></li>
+    </ul>
+  </div>
+
+</div>
+
