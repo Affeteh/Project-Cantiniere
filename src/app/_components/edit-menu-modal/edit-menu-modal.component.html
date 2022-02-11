@@ -1,0 +1,43 @@
+<div class="modal fade" tabindex="-1" id="editMenu" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="editModalTitle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalTitle">Edit {{menu.label}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <div class="form-group" id="editForm">
+              <label for="label">Label</label>
+              <input type="text" class="form-control" [(ngModel)]="menu2.label" id="label" name="label" #label="ngModel">
+              <label for="description">Description</label>
+              <input type="text" class="form-control" [(ngModel)]="menu2.description" id="description" name="description" #description="ngModel">
+              <div class="row" id="divWeeks" >
+                <label for="weeks">Weeks</label>
+                <span *ngFor="let week of weeks" id="weeks" class=" form-check col sm-1" style="display: flex; flex-direction: column;align-items: center; margin:0 2px 0 2px;">
+                  <input class="form-control form-check-input" type="checkbox" id="week" (change)="pushWeek($event)" [value]="week">
+                  <label class="form-check-label" for="week">{{week}}</label>
+                </span>
+              </div>
+              <label for="price" >Price</label>
+              <input type="number" class="form-control" [(ngModel)]="menu2.priceDF" name="price" #price="ngModel" id="price">
+              <div id="mealsDiv">
+                <label for="meals" class="form-label">Meals</label>
+                <span *ngFor="let meal of menu.meals" class="form-check">
+                  <input class="form-control form-check-input" type="checkbox" id="mealCheckbox" (change)="pushMeal($event)" [value]="meal.id" checked>
+                  <label class="form-check-label" for="mealCheckbox">{{meal.label}}</label>
+                </span>
+                <span *ngFor="let meal of mealsCopy" class="form-check" id="meals">
+                  <input class="form-control form-check-input" type="checkbox" id="mealCheckbox" (change)="pushMeal($event)" [value]="meal.id">
+                  <label class="form-check-label" for="mealCheckbox">{{meal.label}}</label>
+                </span>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>

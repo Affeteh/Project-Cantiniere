@@ -12,7 +12,7 @@ import { AddMenuModalComponent } from './_components/add-menu-modal/add-menu-mod
 import { DeleteMenuModalComponent } from './_components/delete-menu-modal/delete-menu-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DetailMenuComponent } from './_components/detail-menu/detail-menu.component';
-import { EditMenuComponent } from './_components/edit-menu/edit-menu.component';
+import { EditMenuModalComponent } from './_components/edit-menu-modal/edit-menu-modal.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { EditMenuComponent } from './_components/edit-menu/edit-menu.component';
     AddMenuModalComponent,
     DeleteMenuModalComponent,
     DetailMenuComponent,
-    EditMenuComponent
+    EditMenuModalComponent
   ],
   imports: [
     BrowserModule,

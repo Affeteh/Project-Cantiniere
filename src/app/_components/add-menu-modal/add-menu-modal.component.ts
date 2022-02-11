@@ -13,7 +13,7 @@ import { MenuServiceService } from 'src/app/_services/menu-service.service';
 })
 export class AddMenuModalComponent implements OnInit {
 
-  menus: Menu[]=[];
+
   weeks: Number[]=[]
   meals: Meals[]=[]
 
@@ -22,8 +22,6 @@ export class AddMenuModalComponent implements OnInit {
   constructor(private menuService: MenuServiceService, private mealService: MealsService) { }
 
   ngOnInit(): void {
-    this.menuService.getAllMenus().subscribe(result=>this.menus=result);
-
     this.mealService.getAllMeals().subscribe(result=>this.meals=result);
 
     for(let i=1;i<=54;i++){

@@ -1,7 +1,9 @@
 <app-add-menu-modal></app-add-menu-modal>
+<app-delete-menu-modal *ngIf="toDelete" [menuId]="menuId" [menuLabel]="label"></app-delete-menu-modal>
+<app-edit-menu-modal *ngIf="openEdit" [menu]="menuEdit"> </app-edit-menu-modal>
 <!-- Button trigger add menu modal -->
 <div class="container">
-  <button type="button" class="btn btn-secondary btn-md" style="border-radius:48%; background-color: tan;" data-bs-toggle="modal" id="addButton" data-bs-target="#addMenuModal">
+  <button type="button" class="btn btn-outline-warning btn-md" style="border-radius:48%" data-bs-toggle="modal" id="addButton" data-bs-target="#addMenuModal">
     <img src="../../../assets/icons/add.svg"id="addImg" alt="">
   </button>
   <!--Menus -->
@@ -23,9 +25,9 @@
             <th>{{menu.priceDF}}</th>
             <th>
               <div>
-                <button type="button" class="btn btn-danger btn-sm" (click)="delete(menu.id)"><img src="../../../assets/icons/trash.svg" alt="trash"></button>
-                <button type="button" class="btn btn-primary btn-sm" (click)="openEdition(menu.id)" id="editButton" ><img src="../../../assets/icons/edit-button.svg" alt=""></button>
-                <button type="button" class="btn btn-info btn-sm" (click)="showDetail(menu.id)"><img src="../../../assets/icons/details.svg" alt=""></button>
+                <button type="button" class="btn  btn-sm" (click)="showDetail(menu.id)"><img src="../../../assets/icons/details.svg" alt=""></button>
+                <button type="button" class="btn  btn-sm" data-bs-toggle="modal" data-bs-target="#editMenu"  (mousemove)="openEdition(menu.id)" ><img src="../../../assets/icons/edit-button.svg" alt=""></button>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"  data-bs-target="#DeleteMenu" (mousedown)="delete(menu.id)"><img src="../../../assets/icons/trash.svg" alt="trash"></button>
               </div>
             </th>
           </tr>
@@ -34,13 +36,7 @@
       <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshMenus()"></ngb-pagination>
     </div>
     <div class="col-md-6" *ngIf="shownDetail">
-      <app-detail-menu [menuId]="menuId"></app-detail-menu>
-    </div>
-    <div class="col-md-6" *ngIf="openEdit">
-      <app-edit-menu [menuId]="menuId"></app-edit-menu>
+      <app-detail-menu [menuId]="menuId" [isOpen]="shownDetail"></app-detail-menu>
     </div>
   </div>
 </div>
-
-
-

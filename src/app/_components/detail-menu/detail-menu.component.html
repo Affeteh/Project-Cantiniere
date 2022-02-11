@@ -1,15 +1,25 @@
-<div class="container">
-  <h1>{{menu.label}}</h1>
-  <h4>Price : {{menu.priceDF}} € </h4>
-  <h5>Available for Weeks : {{menu.availableForWeeks}}</h5>
-  <div class="card" style="width: 20rem;">
-    <div class="card-header">
-      Meals :
+<div class="container" [hidden]="!isOpen">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title">{{menu.label}}</h1>
+      <h4 class="card-subtitle mb-2 text-muted">Price : {{menu.priceDF}} € </h4>
+      <h5>Available for Weeks : {{menu.availableForWeeks}}</h5>
+      <table style="width: 20rem;">
+        <tr>
+          <th >
+            Meals :
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <ul class="list-group list-group-flush">
+              <li *ngFor="let meal of menu.meals" class="list-group-item"><label for="imgMeal">{{meal.label}}</label></li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+      <button (click)="goBack()"><img src="../../../assets/icons/arrow-left.svg" alt="">Back</button>
     </div>
-    <ul class="list-group list-group-flush">
-      <li *ngFor="let meal of menu.meals" class="list-group-item"><label for="imgMeal">{{meal.label}}</label></li>
-    </ul>
   </div>
-
 </div>
 
