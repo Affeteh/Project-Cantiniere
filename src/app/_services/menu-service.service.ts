@@ -28,8 +28,8 @@ export class MenuServiceService {
     return this.httpClient.get<Menu[]>(`${this.url}/findallavailableforweek/${weekNumber}`);
   }
 
-  getMenuImg(imgId:number):Observable<Image>{
-    return this.httpClient.get<Image>(`${this.url}/findimg/${imgId}`);
+  getMenuImg(menuId:number):Observable<Image>{
+    return this.httpClient.get<Image>(`${this.url}/findimg/${menuId}`);
   }
 
   getMenuById(id:number): Observable<Menu>{

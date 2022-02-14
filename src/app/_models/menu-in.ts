@@ -1,20 +1,22 @@
+import { Image } from "./image";
+
 export class MenuIn {
 
   id: number;
   description: string;
   label: string;
   status: number;
-  imageId: number;
+  image?: Image;
   priceDF:number;
   availableForWeeks: number[];
   mealIds : number[]
 
 
-  constructor(description: string, label: string, status: number=0, imageId:number=0, priceDf: number,availableForWeeks: number[], meals: number[], id: number=0){
+  constructor(description: string, label: string, status: number=0, priceDf: number,availableForWeeks: number[], meals: number[], id: number=0,image?:Image){
     this.description=description;
     this.label=label;
     this.status=status;
-    this.imageId=imageId;
+    this.image=image;
     this.priceDF=priceDf;
     this.availableForWeeks=availableForWeeks;
     this.mealIds=meals;

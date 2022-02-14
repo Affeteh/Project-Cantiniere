@@ -17,7 +17,7 @@ export class AddMenuModalComponent implements OnInit {
   weeks: Number[]=[]
   meals: Meals[]=[]
 
-  @Input() menu: MenuIn =new MenuIn("","",0,0,0,[],[]) ;
+  @Input() menu: MenuIn =new MenuIn("","",0,0,[],[]) ;
 
   constructor(private menuService: MenuServiceService, private mealService: MealsService) { }
 

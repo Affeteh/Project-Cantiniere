@@ -21,7 +21,7 @@ meals: Meals[]=[];
 mealsId:number[]=[];
 mealsCopy:Meals[]=[];
 menuBis:Menu=new Menu("","",0,0,0,[],[]);
-menu2:MenuIn=new MenuIn("","",0,0,0,[],[]);
+menu2:MenuIn=new MenuIn("","",0,0,[],[]);
 
 constructor(private menuService: MenuServiceService, private mealService: MealsService) { }
 
@@ -31,37 +31,36 @@ ngOnInit(): void {
     this.weeks.push(i);
   }
 
-  console.log(this.menu);
   this.menuBis=this.menu;
-  // this.menuService.getMenuById(this.menuId).subscribe(data=>{
-  //   this.menu=data;
-  // console.log(this.menu)});
 
   this.mealService.getAllMeals().subscribe(result=>{
       this.meals=result;
-      this.mealsCopy=result;
+      this.mealsCopy=result; //To have a list of meals without the ones in the menu
 
       for(let meal of this.menuBis.meals){
         this.mealsId.push(meal.id);
       };
+
+      //To have the right type of meal for the service (API)
       this.menu2={
         id:this.menuBis.id,
         label:this.menuBis.label,
         description:this.menuBis.description,
         status:this.menuBis.status,
-        imageId:this.menuBis.imageId,
         availableForWeeks:this.menuBis.availableForWeeks,
         priceDF:this.menuBis.priceDF,
         mealIds:this.mealsId
       };
 
+
+      //To get the list of unchosen meal
       for(let meal of this.menuBis.meals){
         let ind=this.meals.findIndex(x=>x.label==meal.label);
         if(ind){
           this.mealsCopy.splice(ind,1);
         }
       }
-
+      //to set the checked parameter for the checkbox
       let divWeeks=document.querySelector('#divWeeks');
       if(divWeeks){
         let inputWeeks=divWeeks.querySelectorAll('input');

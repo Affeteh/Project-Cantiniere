@@ -13,6 +13,11 @@ import { DeleteMenuModalComponent } from './_components/delete-menu-modal/delete
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DetailMenuComponent } from './_components/detail-menu/detail-menu.component';
 import { EditMenuModalComponent } from './_components/edit-menu-modal/edit-menu-modal.component';
+import { GestionnaireMealsComponent } from './_components/gestionnaire-meals/gestionnaire-meals.component';
+import { AddMealModalComponent } from './_components/add-meal-modal/add-meal-modal.component';
+import { DeleteMealModalComponent } from './_components/delete-meal-modal/delete-meal-modal.component';
+import { EditMealModalComponent } from './_components/edit-meal-modal/edit-meal-modal.component';
+import { DetailMealComponent } from './_components/detail-meal/detail-meal.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,12 @@ import { EditMenuModalComponent } from './_components/edit-menu-modal/edit-menu-
     AddMenuModalComponent,
     DeleteMenuModalComponent,
     DetailMenuComponent,
-    EditMenuModalComponent
+    EditMenuModalComponent,
+    GestionnaireMealsComponent,
+    AddMealModalComponent,
+    DeleteMealModalComponent,
+    EditMealModalComponent,
+    DetailMealComponent
   ],
   imports: [
     BrowserModule,

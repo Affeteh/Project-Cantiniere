@@ -1,0 +1,35 @@
+<div class="container">
+  <button type="button" class="btn btn-outline-warning btn-md" style="border-radius:48%" data-bs-toggle="modal" id="addButton" data-bs-target="#addMealModal">
+    <img src="../../../assets/icons/add.svg" id="addImg" alt="">
+  </button>
+  <!--Menus -->
+  <div class="row">
+    <div class="col-md-10" id="mealTable">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Label</th>
+            <th>Weeks</th>
+            <th>price</th>
+            <th>options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let meal of meals | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+            <th>{{meal.label}}</th>
+            <th>{{meal.availableForWeeks}}</th>
+            <th>{{meal.priceDF}}</th>
+            <th>
+              <div>
+                <button type="button" class="btn  btn-sm" (click)="showDetail(meal.id)"><img src="../../../assets/icons/details.svg" alt=""></button>
+                <button type="button" class="btn  btn-sm" data-bs-toggle="modal" data-bs-target="#editMeal"  (mousemove)="openEdition(meal.id)" ><img src="../../../assets/icons/edit-button.svg" alt=""></button>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"  data-bs-target="#DeleteMeal" (mousedown)="delete(meal.id)"><img src="../../../assets/icons/trash.svg" alt="trash"></button>
+              </div>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshMeals()"></ngb-pagination>
+    </div>
+  </div>
+</div>

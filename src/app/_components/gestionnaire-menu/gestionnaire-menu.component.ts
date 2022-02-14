@@ -32,7 +32,7 @@ export class GestionnaireMenuComponent implements OnInit {
 
 
 
-  constructor(private menuService: MenuServiceService, private mealService: MealsService,private modalService:NgbModal) { }
+  constructor(private menuService: MenuServiceService, private mealService: MealsService) { }
 
 
   ngOnInit(): void {
@@ -45,9 +45,7 @@ export class GestionnaireMenuComponent implements OnInit {
 
     this.mealService.getAllMeals().subscribe(result=>this.meals=result);
 
-    for(let i=1;i<=54;i++){
-      this.weeks.push(i);
-    };
+    
 
     this.refreshMenus();
 
