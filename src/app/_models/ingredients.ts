@@ -1,6 +1,6 @@
 export class Ingredients {
 
-  id?: number;
+  id: number;
 
   description: string;
 
@@ -21,7 +21,7 @@ export class Ingredients {
 
       imageId: number,
 
-      id?: number
+      id: number=0
       ){
         this.id = id;
 

@@ -1,1 +1,43 @@
-<p>add-meal-modal works!</p>
+<!-- Add Meal Modal -->
+<div class="modal fade" id="addMealModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="addMealModalTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addMealModalTitle">New Meal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="">
+          <span aria-hidden="true" hidden>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <div class="form-group">
+            <label for="label">Label</label>
+            <input type="text" class="form-control" [(ngModel)]="meal.label" id="label" name="label" #label="ngModel">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" [(ngModel)]="meal.description" id="description" name="description" #description="ngModel">
+            <div class="row" >
+              <label for="weeks">Weeks</label>
+              <span *ngFor="let week of weeks" id="weeks" class=" form-check col sm-2" style="display: flex; flex-direction: column;align-items: center; margin:0 2% 0 2%;">
+                <input class="form-control form-check-input" type="checkbox" id="week" (change)="pushWeek($event)" [value]="week">
+                <label class="form-check-label" for="week">{{week}}</label>
+              </span>
+            </div>
+            <label for="price" >Price</label>
+            <input type="number" class="form-control" [(ngModel)]="meal.priceDF" name="price" #price="ngModel" id="price">
+            <div>
+              <label for="meals" class="form-label">Ingredients</label>
+              <span *ngFor="let ingredient of ingredients" class="form-check" id="meals">
+                <input class="form-control form-check-input" type="checkbox" id="inlineCheckbox1" (change)="pushIngredient($event)" [value]="ingredient.id">
+                <label class="form-check-label" for="inlineCheckbox1">{{ingredient.label}}</label>
+              </span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

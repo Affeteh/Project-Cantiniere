@@ -45,7 +45,7 @@ export class GestionnaireMenuComponent implements OnInit {
 
     this.mealService.getAllMeals().subscribe(result=>this.meals=result);
 
-    
+
 
     this.refreshMenus();
 
@@ -72,7 +72,6 @@ export class GestionnaireMenuComponent implements OnInit {
   openEdition(id:number){
     this.openEdit=!this.openEdit;
     this.menuService.getMenuById(id).subscribe(data=>this.menuEdit=data);
-    //this.moveTable(this.openEdit);
   }
   showDetail(id:number){
     this.shownDetail=!this.shownDetail;

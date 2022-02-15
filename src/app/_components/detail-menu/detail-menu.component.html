@@ -13,7 +13,7 @@
         <tr>
           <td>
             <ul class="list-group list-group-flush">
-              <li *ngFor="let meal of menu.meals" class="list-group-item"><label for="imgMeal">{{meal.label}}</label></li>
+              <li *ngFor="let meal of meals" class="list-group-item"><img [src]="meal.img" alt=""><label for="imgMeal">{{meal.label}}</label></li>
             </ul>
           </td>
         </tr>

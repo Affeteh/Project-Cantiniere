@@ -1,3 +1,4 @@
+<app-add-meal-modal></app-add-meal-modal>
 <div class="container">
   <button type="button" class="btn btn-outline-warning btn-md" style="border-radius:48%" data-bs-toggle="modal" id="addButton" data-bs-target="#addMealModal">
     <img src="../../../assets/icons/add.svg" id="addImg" alt="">
@@ -30,6 +31,9 @@
         </tbody>
       </table>
       <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshMeals()"></ngb-pagination>
+    </div>
+    <div class="col-md-6" *ngIf="shownDetail">
+      <app-detail-meal [mealId]="mealId" [isOpen]="shownDetail"></app-detail-meal>
     </div>
   </div>
 </div>

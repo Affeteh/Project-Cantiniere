@@ -69,8 +69,8 @@ export class GestionnaireMealsComponent implements OnInit {
     //this.moveTable(this.openEdit);
   }
   showDetail(id:number){
-    this.shownDetail=!this.shownDetail;
     this.mealId=id;
+    this.shownDetail=!this.shownDetail;
     this.moveTable(this.shownDetail);
   }
   delete(id :number){
