@@ -1,4 +1,7 @@
 <app-add-meal-modal></app-add-meal-modal>
+<app-delete-meal-modal *ngIf="toDelete" [mealId]="mealId" [mealLabel]="label"></app-delete-meal-modal>
+<app-edit-meal-modal *ngIf="openEdit" [meal]="mealEdit"></app-edit-meal-modal>
+
 <div class="container">
   <button type="button" class="btn btn-outline-warning btn-md" style="border-radius:48%" data-bs-toggle="modal" id="addButton" data-bs-target="#addMealModal">
     <img src="../../../assets/icons/add.svg" id="addImg" alt="">

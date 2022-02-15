@@ -78,7 +78,6 @@ export class GestionnaireMealsComponent implements OnInit {
     this.toDelete=!this.toDelete;
     this.mealId=id;
     this.mealService.getMeal(id).subscribe(data=>this.label=data.label);
-
   }
 
 }
