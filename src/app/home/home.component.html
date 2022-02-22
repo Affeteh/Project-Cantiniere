@@ -1,1 +1,22 @@
 <h2>Home Page</h2>
+<div class="container">
+  <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active d-md-block w-100" data-bs-interval="3000">
+          <h4>Hungry? choose your menu and enjoy!</h4>
+      </div>
+      <div *ngFor="let menu of menusWeek" class="carousel-item" data-bs-interval="5000">
+
+        <div >
+          <img *ngFor="let meal of menu.meals" [src]="meal.img" alt="">
+        </div>
+
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{menu.label}}</h5>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

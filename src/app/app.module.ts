@@ -18,6 +18,7 @@ import { AddMealModalComponent } from './_components/add-meal-modal/add-meal-mod
 import { DeleteMealModalComponent } from './_components/delete-meal-modal/delete-meal-modal.component';
 import { EditMealModalComponent } from './_components/edit-meal-modal/edit-meal-modal.component';
 import { DetailMealComponent } from './_components/detail-meal/detail-meal.component';
+import { BasketComponent } from './_components/basket/basket.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DetailMealComponent } from './_components/detail-meal/detail-meal.compo
     AddMealModalComponent,
     DeleteMealModalComponent,
     EditMealModalComponent,
-    DetailMealComponent
+    DetailMealComponent,
+    BasketComponent
   ],
   imports: [
     BrowserModule,
