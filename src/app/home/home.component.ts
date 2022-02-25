@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
             console.log(this.meals)
 
             this.menusWeek.push({
+              id:menu.id,
               description: menu.description,
               label:menu.label,
               meals:this.meals

@@ -1,0 +1,22 @@
+#listMeal{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+.card-title{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+h1{
+  text-align: center;
+}
+.list-group-item{
+  width:20%;
+  border: none;
+}
+#imgButton{
+  height: 80px;
+  width: 80px;
+}

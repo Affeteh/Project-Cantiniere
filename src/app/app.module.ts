@@ -19,6 +19,8 @@ import { DeleteMealModalComponent } from './_components/delete-meal-modal/delete
 import { EditMealModalComponent } from './_components/edit-meal-modal/edit-meal-modal.component';
 import { DetailMealComponent } from './_components/detail-meal/detail-meal.component';
 import { BasketComponent } from './_components/basket/basket.component';
+import { CardMenuComponent } from './_components/card-menu/card-menu.component';
+import { CardMenuDetailledComponent } from './_components/card-menu-detailled/card-menu-detailled.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { BasketComponent } from './_components/basket/basket.component';
     DeleteMealModalComponent,
     EditMealModalComponent,
     DetailMealComponent,
-    BasketComponent
+    BasketComponent,
+    CardMenuComponent,
+    CardMenuDetailledComponent
   ],
   imports: [
     BrowserModule,
