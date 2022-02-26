@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Ingredients } from 'src/app/_models/ingredients';
 import { Menu } from 'src/app/_models/menu';
+import { User } from 'src/app/_models/user';
 import { MealsService } from 'src/app/_services/meals.service';
 import { MenuServiceService } from 'src/app/_services/menu-service.service';
 
@@ -12,10 +13,12 @@ import { MenuServiceService } from 'src/app/_services/menu-service.service';
 export class CardMenuDetailledComponent implements OnInit {
 
   @Input() menuId:any;
-  @Input() isShowned:any
+  @Input() isShowned:any;
+  @Output() newShownedValue = new EventEmitter<boolean>()
   menu:Menu=new Menu("","",0,0,0,[],[]);
   meals: any[]=[];
   ingredients:Ingredients[]= [];
+  user:User=new User("",0,"","","",false,"","","","",0,0,0,0)
 
   show:boolean=false;
 
@@ -29,6 +32,7 @@ export class CardMenuDetailledComponent implements OnInit {
       for(let meal of this.menu.meals){
         this.mealService.getMealImg(meal.id).subscribe(data=>{
           this.meals.push({
+            id:meal.id,
             label:meal.label,
             img:data.image64,
             ingredients:meal.ingredients,
@@ -40,7 +44,20 @@ export class CardMenuDetailledComponent implements OnInit {
   }
 
 
-  close(){
-    this.show=!this.show;
+  close(value:boolean){
+    this.show=!value
+    this.newShownedValue.emit(this.show);
+  }
+
+  order(id:number){
+    if(this.user.id==0){
+      alert("Vous devez être connecté pour commander un plat");
+    }else{
+      this.mealService.getMeal(id).subscribe(data=>{
+      alert(`Vous venez de commander le plat ${data.label}, vous pouvez retrouver le detail de votre commande dans votre panier!`);
+    });
+    }
+
+
   }
 }

@@ -6,7 +6,7 @@
         <h4 class="card-subtitle mb-2 text-muted">Prix : {{menu.priceDF}} € </h4>
       </span>
       <span>
-        <button class="btn btn-light" (click)="close()">❌</button>
+        <button class="btn btn-light" (click)="close(show)">❌</button>
       </span>
     </div>
 
@@ -36,7 +36,7 @@
           </td>
           <td class="btnOrder">
             <p class="card-subtitle text-muted">{{meal.price}} €</p>
-            <button class="btn">Commander</button>
+            <button  (click)="order(meal.id)">Commander</button>
           </td>
         </tr>
       </tbody>

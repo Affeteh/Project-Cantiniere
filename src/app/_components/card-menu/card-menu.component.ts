@@ -19,7 +19,6 @@ export class CardMenuComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.menuId);
     this.menuService.getMenuById(this.menuId).subscribe(data=>{
       this.menu=data;
       for(let meal of this.menu.meals){

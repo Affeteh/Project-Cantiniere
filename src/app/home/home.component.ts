@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { timestamp } from 'rxjs';
+import { Component, OnInit, Output } from '@angular/core';
 import { Menu } from '../_models/menu';
-import { MealsService } from '../_services/meals.service';
 import { MenuServiceService } from '../_services/menu-service.service';
 
 @Component({
@@ -21,7 +19,9 @@ export class HomeComponent implements OnInit {
   show:boolean=false;
   menuId:number=0;
 
-  constructor(private menuService:MenuServiceService,private mealService:MealsService) { }
+  @Output() isShownedChange: any;
+
+  constructor(private menuService:MenuServiceService) { }
 
   ngOnInit(): void {
 
@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
     this.menuService.getMenusForToday().subscribe(result=>{
 
       this.MenusOfTheWeeks=result;
-      console.log(this.MenusOfTheWeeks);
 
       for(let menu of this.MenusOfTheWeeks){
 
@@ -42,16 +41,16 @@ export class HomeComponent implements OnInit {
             meals:menu.meals
           })
         }
-
       }
-
-      console.log(this.menusWeek)
     });
   }
 
   showDetails(Id:number){
     this.show=!this.show;
     this.menuId=Id;
+  }
+  changeShowValue(value:boolean){
+    this.show=value;
   }
   // getWeekNumber(){
   //   let firstDayOfTheYear=new Date("01 Jan 2022");
