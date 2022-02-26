@@ -1,0 +1,33 @@
+.card-head{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+label{
+  padding-left: 10px;
+}
+#ingredients{
+  display: inline-block;
+}
+img{
+  height: 30px;
+  width: 30px;
+}
+table{
+  color:#371450;
+  --bs-table-striped-color:#371450;
+  --bs-table-active-color: #371450;
+}
+.btnOrder{
+  text-align: center;
+}
+button{
+  background-color: #371450;
+  color:#FFD64B;
+}
+

@@ -1,1 +1,45 @@
-<p>card-menu-detailled works!</p>
+<div *ngIf="show" class="card border-0 bg-transparent">
+  <div class="card-body">
+    <div class="card-head" >
+      <span>
+        <h1 class="card-title">{{menu.label}}</h1>
+        <h4 class="card-subtitle mb-2 text-muted">Prix : {{menu.priceDF}} € </h4>
+      </span>
+      <span>
+        <button class="btn btn-light" (click)="close()">❌</button>
+      </span>
+    </div>
+
+
+    <table class="table" style="width: 800px;">
+      <thead>
+        <tr>
+          <th >
+            Plats:
+          </th>
+          <th>Action:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let meal of meals">
+          <td>
+            <ul class="list-group list-group-flush">
+              <li id="" class="list-group-item">
+                <img [src]="meal.img" alt="">
+                <label for="imgMeal">{{meal.label}}</label>
+                <p class="card-subtitle text-muted">Ingredients:</p>
+                <ul>
+                  <li id="ingredients" *ngFor="let ingredient of meal.ingredients">{{ingredient.label}}, </li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+          <td class="btnOrder">
+            <p class="card-subtitle text-muted">{{meal.price}} €</p>
+            <button class="btn">Commander</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

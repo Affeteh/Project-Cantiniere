@@ -1,13 +1,14 @@
 <div class="container">
-  <div class="card">
-    <div class="card-body">
+  <div class="card border-0 bg-transparent">
+    <div class="card-body  bg-transparent">
       <div class="card-title">
         <h1>{{menu.label}}</h1>
-        <button type="button" class="btn btn-sm"><img id="imgButton" src="../../../assets/icons/eye.svg" alt=""></button>
       </div>
-
-      <ul id="listMeal" class="list-group">
-        <li *ngFor="let meal of meals" class="list-group-item"><img [src]="meal.img" alt=""><label for="imgMeal">{{meal.label}}</label></li>
+      <ul id="listMeal" class="list-group  bg-transparent">
+        <li *ngFor="let meal of meals" class="list-group-item  bg-transparent">
+          <img [src]="meal.img" alt="" (click)="showDetail(menu.id,meal.id)">
+          <label for="imgMeal">{{meal.label}}</label>
+        </li>
       </ul>
     </div>
   </div>

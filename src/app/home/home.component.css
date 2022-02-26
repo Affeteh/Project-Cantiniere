@@ -1,4 +1,24 @@
+.carousel{
+  background-color: #371450;
+  color:#FFD64B;
+}
+.firstSlide{
+  text-align: center;
+  padding-top: 12%;
+}
+.carousel-item{
+  height: 291.29px;
+  width: 960px;
+}
 img{
   width:200px;
   height: 200px;
+}
+h2{
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+h4{
+  text-align: center;
 }

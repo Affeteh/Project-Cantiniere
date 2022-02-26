@@ -13,6 +13,7 @@ export class CardMenuComponent implements OnInit {
   @Input() menuId:any;
   menu:Menu=new Menu("","",0,0,0,[],[]);
   meals: any[]=[];
+  show:boolean=false;
 
   constructor(private menuService: MenuServiceService, private mealService :MealsService) { }
 
@@ -32,5 +33,8 @@ export class CardMenuComponent implements OnInit {
     });
   }
 
+  showDetail(menuPeekedId:number,mealId:number){
+    this.show=!this.show;
+  }
 
 }
