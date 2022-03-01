@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="card">
+   <div class="card-header">
+    Votre commande en cours
+   </div>
+   <div class="card-body">
+    <ul class="list-group group-flush">
+      <li *ngFor="let item of orderItems" class="list-group-item">
+        <h5>{{item.menu.label}}</h5>
+        <div style="display: flex;">
+           <h5>{{item.meal.label}}</h5>
+           <span class="counter">
+             <button class="btn btn-small" (click)="soustract(item)">-</button>
+               <span class="count-number">{{item.quantity}}</span>
+             <button class="btn btn-small" (click)="add(item)">+</button>
+           </span>
+        </div>
+      </li>
+    </ul>
+    <span>
+      Total : *******€
+    </span>
+   </div>
+   <div class="card-footer">
+    <button class="btn btn-success">Valider</button>
+   </div>
+  </div>
+</div>

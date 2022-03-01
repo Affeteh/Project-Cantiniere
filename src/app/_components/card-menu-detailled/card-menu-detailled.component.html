@@ -36,10 +36,53 @@
           </td>
           <td class="btnOrder">
             <p class="card-subtitle text-muted">{{meal.price}} €</p>
-            <button  (click)="order(meal.id)">Commander</button>
+            <button *ngIf="(user.id==0)" data-bs-toggle="modal" data-bs-target="#noAuthenticateModal" >Commander</button>
+            <button *ngIf="!(user.id==0)" data-bs-toggle="modal" data-bs-target="#orderModal" (click)="addToCart(meal.id)" >Commander</button>
           </td>
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <!--Modal if you're not authenticate-->
+  <div class="modal " id="noAuthenticateModal" tabindex="-3" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="noAuthenticateTitle">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="noAuthenticateTitle">Erreur pour la commande</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Erreur de procédure.
+          Vous devez être authentifié pour pouvoir passer votre commande.
+        </div>
+        <div class="modal-footer">
+          <a routerLink="" class="btn btn-light" role="button">Se connecter</a>
+          <a routerLink="" class="btn btn-light" role="button">S'inscrire</a>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Modal if you're authenticate-->
+  <div class="modal " id="orderModal" tabindex="-3" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="orderModalTitle">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="orderModalTitle">Récapitulatif de la commande</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Le plat vient d'être ajouté à votre panier avec succès.
+          Vous pouvez continuer à alimenter celui-ci ou aller dans l'onglet correspondant
+          afin de consulter les détails et valider votre commande.
+        </div>
+        <div class="modal-footer">
+          <a routerLink="" class="btn btn-light" role="button" data-bs-dismiss="modal" (click)="close(show)">Continuer les achats</a>
+          <a routerLink="panier" class="btn btn-light" role="button" data-bs-dismiss="modal">Voir mon panier</a>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

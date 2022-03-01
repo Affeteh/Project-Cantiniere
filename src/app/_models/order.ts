@@ -1,19 +1,21 @@
-import { Meals } from "./meals";
+import { Quantity } from "./quantity";
 import { User } from "./user";
 
-export class Menu {
+export class Order {
 
-  id?: number;
+  id: number;
   creationDate: Date;
   creationTime: Date;
   status: number;
-  user: User[];
+  user: User;
+  quantity:Quantity[];
 
-  constructor(creationDate: Date, creationTime: Date, status: number, imageId:number, user:User[],id?: number){
+  constructor(creationDate: Date, creationTime: Date, status: number, user:User,quantity:Quantity[],id: number=0){
     this.creationDate=creationDate;
     this.creationTime=creationTime;
     this.status=status;
     this.user=user;
+    this.quantity=quantity;
     this.id=id;
   }
 }

@@ -1,14 +1,15 @@
 <h2>Menu disponible cette semaine</h2>
+<a routerLink="/panier">Voir le panier</a>
 <div class="container">
   <div class="row">
     <div id="carouselMenus" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active  w-100" data-bs-interval="3000">
+        <div class="carousel-item active" data-bs-interval="3000">
           <div class="firstSlide">
             <h4>Un petit creux? Découvre les menus disponibles cette semaine  ⇨</h4>
           </div>
         </div>
-        <div *ngFor="let menu of menusWeek" class="carousel-item" data-bs-interval="5000">
+        <div id="divItem" *ngFor="let menu of menusWeek" class="carousel-item" data-bs-interval="5000">
           <app-card-menu [menuId]="menu.id" (click)="showDetails(menu.id)"> </app-card-menu>
         </div>
       </div>

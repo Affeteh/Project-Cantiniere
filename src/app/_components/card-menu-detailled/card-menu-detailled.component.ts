@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Ingredients } from 'src/app/_models/ingredients';
+import { Meals } from 'src/app/_models/meals';
 import { Menu } from 'src/app/_models/menu';
+import { Quantity } from 'src/app/_models/quantity';
 import { User } from 'src/app/_models/user';
+import { BasketService } from 'src/app/_services/basket.service';
 import { MealsService } from 'src/app/_services/meals.service';
 import { MenuServiceService } from 'src/app/_services/menu-service.service';
 
@@ -18,11 +21,10 @@ export class CardMenuDetailledComponent implements OnInit {
   menu:Menu=new Menu("","",0,0,0,[],[]);
   meals: any[]=[];
   ingredients:Ingredients[]= [];
-  user:User=new User("",0,"","","",false,"","","","",0,0,0,0)
-
+  user:User=new User("",0,"","","",false,"","","","",0,0,0,4);
   show:boolean=false;
 
-  constructor(private menuService: MenuServiceService, private mealService :MealsService) { }
+  constructor(private menuService: MenuServiceService, private mealService :MealsService, private cartService:BasketService) { }
 
   ngOnInit(): void {
 
@@ -41,6 +43,7 @@ export class CardMenuDetailledComponent implements OnInit {
         });
       }
     });
+
   }
 
 
@@ -49,15 +52,14 @@ export class CardMenuDetailledComponent implements OnInit {
     this.newShownedValue.emit(this.show);
   }
 
-  order(id:number){
-    if(this.user.id==0){
-      alert("Vous devez être connecté pour commander un plat");
-    }else{
-      this.mealService.getMeal(id).subscribe(data=>{
-      alert(`Vous venez de commander le plat ${data.label}, vous pouvez retrouver le detail de votre commande dans votre panier!`);
+  addToCart(id:number){
+    let menu:Menu;
+    let meal:Meals;
+    console.log(this.menuId);
+    this.menuService.getMenuById(this.menuId).subscribe(data=>menu=data);
+    this.mealService.getMeal(id).subscribe(data=>{
+      meal=data;
+      this.cartService.addItem(new Quantity(1,meal,menu));
     });
-    }
-
-
   }
 }

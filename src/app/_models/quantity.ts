@@ -1,27 +1,24 @@
-import { Ingredients } from "./ingredients";
 import { Meals } from "./meals";
+import { Menu } from "./menu";
 
 export class Quantity {
 
-    id?: number;
+    id: number;
     quantity: number;
-    meal : Meals[];
-    category: number;
-    ingredients: Ingredients[];
-    
+    meal : Meals;
+    menu: Menu;
+
 
   constructor(
     quantity: number,
-    meal : Meals[],
-    category: number,
-    ingredients: Ingredients[],
-    id?: number
+    meal : Meals,
+    menu: Menu,
+    id: number=0
     ){
 
      this.quantity = quantity;
      this.meal = meal;
-     this.category = category;
-     this.ingredients = ingredients;
+     this.menu=menu
      this.id = id;
 
     }
