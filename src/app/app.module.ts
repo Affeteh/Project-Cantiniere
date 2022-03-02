@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ProfilComponent } from './_components/profil/profil.component';
 import { GestionUserComponent } from './_components/gestion-user/gestion-user.component';
+import { GestionCommandeComponent } from './_components/gestion-commande/gestion-commande.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ProfilComponent,
-    GestionUserComponent
+    GestionUserComponent,
+    GestionCommandeComponent
   ],
   imports: [
     BrowserModule,
