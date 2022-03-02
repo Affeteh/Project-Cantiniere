@@ -13,10 +13,14 @@ export class BasketService {
 
 
   addItem(item:Quantity){
-    this.basketItems.push(item);
+     this.basketItems.push(item);
+     return this.basketItems;
   }
 
-  removeItem(id:number){}
+  removeItem(id:number){
+    let index = this.basketItems.findIndex(elt=>elt.id==id);
+    return this.basketItems.slice(index,1);
+  }
 
   getFullBasket(){
     return this.basketItems;

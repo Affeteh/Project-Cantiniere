@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Ingredients } from 'src/app/_models/ingredients';
-import { Meals } from 'src/app/_models/meals';
 import { Menu } from 'src/app/_models/menu';
 import { Quantity } from 'src/app/_models/quantity';
 import { User } from 'src/app/_models/user';
@@ -23,8 +22,9 @@ export class CardMenuDetailledComponent implements OnInit {
   ingredients:Ingredients[]= [];
   user:User=new User("",0,"","","",false,"","","","",0,0,0,4);
   show:boolean=false;
+  cartItems:Quantity[]=[];
 
-  constructor(private menuService: MenuServiceService, private mealService :MealsService, private cartService:BasketService) { }
+  constructor(private menuService: MenuServiceService, private mealService :MealsService, private cartService:BasketService) {  }
 
   ngOnInit(): void {
 
@@ -44,6 +44,11 @@ export class CardMenuDetailledComponent implements OnInit {
       }
     });
 
+    if(localStorage.getItem("cartItems")!==null){
+      this.cartItems=JSON.parse(localStorage.getItem("cartItems")||"[]");
+    }
+
+
   }
 
 
@@ -53,13 +58,11 @@ export class CardMenuDetailledComponent implements OnInit {
   }
 
   addToCart(id:number){
-    let menu:Menu;
-    let meal:Meals;
-    console.log(this.menuId);
-    this.menuService.getMenuById(this.menuId).subscribe(data=>menu=data);
     this.mealService.getMeal(id).subscribe(data=>{
-      meal=data;
-      this.cartService.addItem(new Quantity(1,meal,menu));
+      this.cartItems=this.cartService.addItem(new Quantity(1,data,this.menu));
+      console.log(this.cartItems);
+      console.log(JSON.stringify(this.cartItems));
+      localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
     });
   }
 }

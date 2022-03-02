@@ -1,11 +1,12 @@
 <div class="container">
+  <button (click)="goBack()">Back</button>
   <div class="card">
    <div class="card-header">
     Votre commande en cours
    </div>
    <div class="card-body">
     <ul class="list-group group-flush">
-      <li *ngFor="let item of orderItems" class="list-group-item">
+      <li *ngFor="let item of items" class="list-group-item">
         <h5>{{item.menu.label}}</h5>
         <div style="display: flex;">
            <h5>{{item.meal.label}}</h5>
@@ -13,6 +14,9 @@
              <button class="btn btn-small" (click)="soustract(item)">-</button>
                <span class="count-number">{{item.quantity}}</span>
              <button class="btn btn-small" (click)="add(item)">+</button>
+           </span>
+           <span>
+             <button (click)="remove(item.id)"><img src="../../../assets/icons/trash.svg" alt=""></button>
            </span>
         </div>
       </li>
