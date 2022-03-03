@@ -17,17 +17,23 @@ export class CardMenuDetailledComponent implements OnInit {
   @Input() menuId:any;
   @Input() isShowned:any;
   @Output() newShownedValue = new EventEmitter<boolean>()
+
+
   menu:Menu=new Menu("","",0,0,0,[],[]);
   meals: any[]=[];
-  ingredients:Ingredients[]= [];
   user:User=new User("",0,"","","",false,"","","","",0,0,0,4);
-  show:boolean=false;
   cartItems:Quantity[]=[];
 
-  constructor(private menuService: MenuServiceService, private mealService :MealsService, private cartService:BasketService) {  }
+  show:boolean=false;
+  stillTime:boolean=true;
+
+  wrapper = document.createElement('div');
+  
+  constructor(private menuService: MenuServiceService, private mealService :MealsService, private cartService:BasketService) {}
 
   ngOnInit(): void {
 
+    //Get meal's picture
     this.show=this.isShowned;
     this.menuService.getMenuById(this.menuId).subscribe(data=>{
       this.menu=data;
@@ -44,17 +50,34 @@ export class CardMenuDetailledComponent implements OnInit {
       }
     });
 
+    //Get the cart
     if(localStorage.getItem("cartItems")!==null){
       this.cartItems=JSON.parse(localStorage.getItem("cartItems")||"[]");
     }
 
-
+    //Set the constraint that you can order only before 10:30 AM
+    let today = new Date() ;
+    let hours = today.getHours();
+    let minutes = today.getMinutes();
+    if(hours==10 && minutes>30 || hours>10){
+      this.stillTime=!this.stillTime;
+    }
   }
-
 
   close(value:boolean){
     this.show=!value
     this.newShownedValue.emit(this.show);
+  }
+
+
+  //--------Cart's Action--------//
+
+  timeOut(){
+    let alertPlaceholder = document.querySelector('#AlertTimeOut');
+    console.log("toto");
+    console.log(alertPlaceholder);
+    this.wrapper.innerHTML = '<div class="alert alert-danger alert-dismissible" role="alert">' + "Aucune commande n'est accepté après 10:30" + '<button type="button" class="btn-close" data-bs-dismiss="alert" (click)="close(show)" aria-label="Close"></button></div>'
+    alertPlaceholder?.append(this.wrapper);
   }
 
   addToCart(id:number){
@@ -62,4 +85,8 @@ export class CardMenuDetailledComponent implements OnInit {
       this.cartItems=this.cartService.addItem(new Quantity(1,data,this.menu));
     });
   }
+
+
 }
+
+

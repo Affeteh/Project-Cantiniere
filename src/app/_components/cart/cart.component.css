@@ -1,0 +1,9 @@
+.card-header,.card-footer{
+  background-color: #371450;
+  color:#FFD64B;
+}
+
+.card-footer{
+  display: flex;
+  justify-content: space-evenly;
+}

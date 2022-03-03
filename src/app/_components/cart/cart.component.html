@@ -1,6 +1,11 @@
 <div class="container">
-  <button (click)="goBack()">Back</button>
-  <div class="card">
+  <button class="btn" (click)="goBack()" style="font-size: large; margin-top:2%">Back</button>
+
+  <div *ngIf="items.length == 0" style="margin-top:30%;">
+    <h2> Votre panier est vide ☹</h2>
+  </div>
+
+  <div *ngIf="items.length>0" class="card" style="margin-top:20px;">
    <div class="card-header">
     Votre commande en cours
    </div>
@@ -8,25 +13,31 @@
     <ul class="list-group group-flush">
       <li *ngFor="let item of items" class="list-group-item">
         <h5>{{item.menu.label}}</h5>
-        <div style="display: flex;">
+        <div style="display: flex; justify-content: space-between;">
            <h5>{{item.meal.label}}</h5>
-           <span class="counter">
-             <button class="btn btn-small" (click)="soustract(item)">-</button>
-               <span class="count-number">{{item.quantity}}</span>
+           <article>
+            <span class="counter">
+              <button class="btn btn-small" (click)="soustract(item)">-</button>
+            <span class="count-number">{{item.quantity}}</span>
              <button class="btn btn-small" (click)="add(item)">+</button>
+            </span>
+            <span>
+             <button class="btn" (click)="remove(item)"><img src="../../../assets/icons/trash.svg" alt=""></button>
            </span>
-           <span>
-             <button (click)="remove(item)"><img src="../../../assets/icons/trash.svg" alt=""></button>
-           </span>
+           </article>
         </div>
       </li>
     </ul>
     <span>
-      Total : *******€
+      Le payement s'effectue auprès de la cantinière.
     </span>
    </div>
    <div class="card-footer">
-    <button class="btn btn-success">Valider</button>
+    <button *ngIf="stillTime" class="btn btn-warning" type="submit" (click)="order()">Valider</button>
+    <button *ngIf="!stillTime"  class="btn btn-success"  data-bs-toggle="tooltip" title="Timing Erreur" data-bs-placement="bottom" disabled>
+      Valider
+    </button>
+    <button class="btn btn-danger" (click)="clear()">Annuler la commande</button>
    </div>
   </div>
 </div>

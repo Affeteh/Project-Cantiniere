@@ -34,10 +34,14 @@
               </li>
             </ul>
           </td>
-          <td class="btnOrder">
+          <td *ngIf="stillTime" class="btnOrder">
             <p class="card-subtitle text-muted">{{meal.price}} €</p>
             <button class="btnAddCart" *ngIf="(user.id==0)" data-bs-toggle="modal" data-bs-target="#noAuthenticateModal" >Commander</button>
             <button class="btnAddCart" *ngIf="!(user.id==0)" data-bs-toggle="modal" data-bs-target="#orderModal" (click)="addToCart(meal.id)" >Commander</button>
+          </td>
+          <td *ngIf="!stillTime" class="btnOrder">
+            <div id="AlertTimeOut"></div>
+            <button type="button" class="btnAddCart" id="AlertBtn" (click)="timeOut()">Commander</button>
           </td>
         </tr>
       </tbody>
@@ -45,7 +49,7 @@
   </div>
 
   <!--Modal if you're not authenticate-->
-  <div class="modal " id="noAuthenticateModal" tabindex="-3" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="noAuthenticateTitle">
+  <div class="modal " id="noAuthenticateModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="noAuthenticateTitle" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -65,7 +69,7 @@
     </div>
   </div>
   <!--Modal if you're authenticate-->
-  <div class="modal " id="orderModal" tabindex="-3" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="orderModalTitle">
+  <div class="modal " id="orderModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="orderModalTitle" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
