@@ -1,19 +1,28 @@
+.card{
+  margin: auto;
+  width: 70%;
+}
+
 .card-head{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
 ul{
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
+
 label{
   padding-left: 10px;
 }
+
 #ingredients{
   display: inline-block;
 }
+
 img{
   height: 30px;
   width: 30px;
@@ -26,7 +35,7 @@ table{
 .btnOrder{
   text-align: center;
 }
-button{
+.btnAddCart{
   background-color: #371450;
   color:#FFD64B;
 }

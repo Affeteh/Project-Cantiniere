@@ -39,7 +39,6 @@ export class CartComponent implements OnInit {
     if(localStorage.getItem("cartItems")!==null){
       this.items=JSON.parse(localStorage.getItem("cartItems") || "[]");
       console.log(this.items);
-
     }
 
   }
@@ -62,11 +61,11 @@ export class CartComponent implements OnInit {
   }
 
   goBack(){
-    this.router.navigate([""]);
+    this.router.navigate([""]).then(_=>document.location.reload());
   }
 
-  remove(id:number){
-    this.cartService.removeItem(id);
+  remove(item:Quantity){
+    this.cartService.removeItem(item);
     document.location.reload();
   }
 }

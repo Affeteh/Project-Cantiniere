@@ -1,17 +1,29 @@
+.topPage{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 .carousel{
-  background-color: #371450;
   color:#FFD64B;
+  height: 1000%;
+  width: 100%;
 }
 .firstSlide{
   text-align: center;
-  padding-top: 12%;
+  height: 90%;
+  width: 100%;
 }
 
-.carousel-item{
-  height: 291.29px;
-  width: 960px;
+.carousel-inner{
+  position: inherit;
+  width: 100%;
+  overflow: hidden;
 }
 
+.carousel-item :active{
+  height: initial;
+}
 img{
   width:200px;
   height: 200px;

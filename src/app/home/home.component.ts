@@ -1,5 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Menu } from '../_models/menu';
+import { Quantity } from '../_models/quantity';
 import { MenuServiceService } from '../_services/menu-service.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit {
   meal:any=null;
   show:boolean=false;
   menuId:number=0;
+  items:Quantity[]=[]
 
   @Output() isShownedChange: any;
 
@@ -25,7 +27,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    // Get meal picture for each  menu
     this.menuService.getMenusForToday().subscribe(result=>{
 
       this.MenusOfTheWeeks=result;
@@ -43,6 +45,11 @@ export class HomeComponent implements OnInit {
         }
       }
     });
+    // keep the cart
+    if(localStorage.getItem("cartItems")!==null){
+      this.items=JSON.parse(localStorage.getItem("cartItems") || "[]");
+      console.log(this.items);
+    }
   }
 
   showDetails(Id:number){
@@ -52,6 +59,8 @@ export class HomeComponent implements OnInit {
   changeShowValue(value:boolean){
     this.show=value;
   }
+
+  
   // getWeekNumber(){
   //   let firstDayOfTheYear=new Date("01 Jan 2022");
   //   let firsDayInMiliseconde=Date.parse(firstDayOfTheYear.toDateString());

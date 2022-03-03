@@ -36,8 +36,8 @@
           </td>
           <td class="btnOrder">
             <p class="card-subtitle text-muted">{{meal.price}} €</p>
-            <button *ngIf="(user.id==0)" data-bs-toggle="modal" data-bs-target="#noAuthenticateModal" >Commander</button>
-            <button *ngIf="!(user.id==0)" data-bs-toggle="modal" data-bs-target="#orderModal" (click)="addToCart(meal.id)" >Commander</button>
+            <button class="btnAddCart" *ngIf="(user.id==0)" data-bs-toggle="modal" data-bs-target="#noAuthenticateModal" >Commander</button>
+            <button class="btnAddCart" *ngIf="!(user.id==0)" data-bs-toggle="modal" data-bs-target="#orderModal" (click)="addToCart(meal.id)" >Commander</button>
           </td>
         </tr>
       </tbody>
@@ -78,9 +78,8 @@
           afin de consulter les détails et valider votre commande.
         </div>
         <div class="modal-footer">
-          <a routerLink="" class="btn btn-light" role="button" data-bs-dismiss="modal" (click)="close(show)">Continuer les achats</a>
-          <a routerLink="panier" class="btn btn-light" role="button" data-bs-dismiss="modal">Voir mon panier</a>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+          <a routerLink="" class="btn btn-outline-warning"  role="button" data-bs-dismiss="modal" (click)="close(show)">Continuer les achats</a>
+          <a routerLink="panier" class="btn btn-outline-warning" role="button" data-bs-dismiss="modal">Voir mon panier</a>
         </div>
       </div>
     </div>

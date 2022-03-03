@@ -60,9 +60,6 @@ export class CardMenuDetailledComponent implements OnInit {
   addToCart(id:number){
     this.mealService.getMeal(id).subscribe(data=>{
       this.cartItems=this.cartService.addItem(new Quantity(1,data,this.menu));
-      console.log(this.cartItems);
-      console.log(JSON.stringify(this.cartItems));
-      localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
     });
   }
 }
