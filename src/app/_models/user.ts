@@ -1,6 +1,6 @@
 export class User {
 
-    id?: number;
+    id: number;
     address: string;
     wallet: number;
     postalCode: string;
@@ -29,7 +29,7 @@ export class User {
     sex: number,
     status: number,
     imageId: number,
-    id?: number,
+    id: number,
     ){
 
      this.address = address;
