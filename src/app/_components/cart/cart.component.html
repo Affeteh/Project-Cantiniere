@@ -33,11 +33,53 @@
     </span>
    </div>
    <div class="card-footer">
-    <button *ngIf="stillTime" class="btn btn-warning" type="submit" (click)="order()">Valider</button>
-    <button *ngIf="!stillTime"  class="btn btn-success"  data-bs-toggle="tooltip" title="Timing Erreur" data-bs-placement="bottom" disabled>
-      Valider
-    </button>
+     <div *ngIf="stillTime">
+      <button  class="btn btn-warning" *ngIf="!(user.id==0)" type="submit" (click)="order()">Valider</button>
+      <button class="btn btn-warning" *ngIf="(user.id==0)" data-bs-toggle="modal" data-bs-target="#noAuthenticateModal" >Commander</button>
+     </div>
+     <div *ngIf="!stillTime">
+      <button   class="btn btn-success"  data-bs-toggle="modal" data-bs-target="#tooLateModal">
+        Valider
+      </button>
+     </div>
     <button class="btn btn-danger" (click)="clear()">Annuler la commande</button>
    </div>
+  </div>
+</div>
+<!--Modal if you're not authenticate-->
+<div class="modal " id="noAuthenticateModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="noAuthenticateTitle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="noAuthenticateTitle">Erreur pour la commande</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Erreur de procédure.
+        Vous devez être authentifié pour pouvoir passer votre commande.
+      </div>
+      <div class="modal-footer">
+        <a routerLink="" class="btn btn-light" role="button">Se connecter</a>
+        <a routerLink="" class="btn btn-light" role="button">S'inscrire</a>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal if it's too late-->
+<div class="modal " id="tooLateModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="tooLateTitle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tooLateTitle">Deadline passée</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        🛑 Aucune commande n'est authorisée après 10H30. 🕥
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
   </div>
 </div>

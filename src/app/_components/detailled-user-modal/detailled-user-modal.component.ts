@@ -21,17 +21,49 @@ export class DetailledUserModalComponent implements OnInit {
       this.fullUser={
         user:this.userbis,
         img:img.image64
-      }
+      };console.log(this.fullUser);
     })
+
+
   }
 
   changeStatus(user:User){
     console.log(user);
+    console.log(user.status);
     if(this.fullUser.user.status==0){
-      this.userService.desactivateUser(user).subscribe(result=> this.fullUser.user=result);
+      this.userService.desactivateUser(user).subscribe(result=> {
+        if(result){
+          this.fullUser.user.status=1;
+        }
+      });
     }else{
-      this.userService.activateUser(user).subscribe(result=>this.fullUser.user=result);
+      this.userService.activateUser(user).subscribe(result=>{
+        if(result){
+          this.fullUser.user.status=0;
+        }
+      });
     }
+  }
+
+  crediter(){
+    let user= this.fullUser.user;
+    let value= document.querySelector<HTMLInputElement>("#amount")?.value;
+    let amount=0;
+    if(value){
+      amount=parseFloat(value);
+    }
+    this.userService.creditUser(user,amount).subscribe(result=>this.fullUser.user=result);
+  }
+
+  debiter(){
+    let user= this.fullUser.user;
+    let value= document.querySelector<HTMLInputElement>("#amountDebit")?.value;
+    console.log(value);
+    let amount=0;
+    if(value){
+      amount=parseFloat(value);
+    }
+    this.userService.debitUser(user,amount).subscribe(result=>this.fullUser.user=result);
   }
 
 }

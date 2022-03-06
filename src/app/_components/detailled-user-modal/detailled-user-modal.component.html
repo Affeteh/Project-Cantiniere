@@ -14,10 +14,13 @@
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title">
-                  <div class="form-check form-switch">
-                    <input *ngIf="fullUser.user.status==0" class="form-check-input" type="checkbox" role="switch" id="SwitchActivation" checked (change)="changeStatus(fullUser.user)">
-                    <input *ngIf="fullUser.user.status!=0" class="form-check-input" type="checkbox" role="switch" id="SwitchActivation">
-                    <label class="form-check-label" for="SwitchActivation">Activé</label>
+                  <div class="form-check form-switch"*ngIf="fullUser.user.status==0">
+                    <input  class="form-check-input" type="checkbox" role="switch"  checked (change)="changeStatus(fullUser.user)">
+                    <label class="form-check-label" for="SwitchDesactivation">Activé</label>
+                  </div>
+                  <div class="form-check form-switch" *ngIf="fullUser.user.status!=0">
+                    <input  class="form-check-input" type="checkbox" role="switch" name="status"  (change)="changeStatus(fullUser.user)">
+                    <label class="form-check-label" for="SwitchActivation">Désactivé</label>
                   </div>
                 </h5>
                 <p class="card-text">Email : {{fullUser.user.email}}</p>
@@ -25,13 +28,51 @@
                 <p class="card-text">Adresse :{{fullUser.user.address}} {{fullUser.user.postalCode}} {{fullUser.user.town}}</p>
                 <span>
                   <p>Cagnotte: {{fullUser.user.wallet}}€</p>
-                  <button class="btn btn-outline-warning">Créditer</button>
-                  <button class="btn btn-outline-danger">Débiter</button>
+                  <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#crediterModal">Créditer</button>
+                  <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#debiterModal">Débiter</button>
                 </span>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!----------------------------Modal in order to credit a user---------------------------->
+<div class="modal fade" id="crediterModal" aria-hidden="true" aria-labelledby="creditModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="creditModal">Information sur le crédit</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="amount">
+        <label for="amount">Indiquez le montant à créditer</label>
+        <button class="btn btn-warning" (mousedown)="crediter()" data-bs-target="#userDetails" data-bs-toggle="modal">Valider</button>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#userDetails" data-bs-toggle="modal">Retour</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!----------------------------Modal in order to debit a user---------------------------->
+<div class="modal fade" id="debiterModal" aria-hidden="true" aria-labelledby="debitModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="debitModal">Information sur le débit</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="amountDebit">
+        <label for="amount">Indiquez le montant à débiter</label>
+        <button class="btn btn-warning" (mousedown)="debiter()" data-bs-target="#userDetails" data-bs-toggle="modal">Valider</button>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#userDetails" data-bs-toggle="modal">Retour</button>
       </div>
     </div>
   </div>

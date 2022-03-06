@@ -28,7 +28,7 @@ export class CardMenuDetailledComponent implements OnInit {
   stillTime:boolean=true;
 
   wrapper = document.createElement('div');
-  
+
   constructor(private menuService: MenuServiceService, private mealService :MealsService, private cartService:BasketService) {}
 
   ngOnInit(): void {
@@ -55,13 +55,7 @@ export class CardMenuDetailledComponent implements OnInit {
       this.cartItems=JSON.parse(localStorage.getItem("cartItems")||"[]");
     }
 
-    //Set the constraint that you can order only before 10:30 AM
-    let today = new Date() ;
-    let hours = today.getHours();
-    let minutes = today.getMinutes();
-    if(hours==10 && minutes>30 || hours>10){
-      this.stillTime=!this.stillTime;
-    }
+    
   }
 
   close(value:boolean){

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpRequest} from '@angular/common/http';
 import { User } from '../_models/user';
 import { Observable } from 'rxjs';
 import { Image } from '../_models/image';
@@ -41,17 +41,17 @@ export class UserService {
 
   desactivateUser(user:User):Observable<User>{
     const httpHeaderOption={headers:new HttpHeaders({'Content-Type':'application/json'})};
-    return this.httpClient.patch<User>(`${this.url}/desactivate/${user.id}`,user,httpHeaderOption);
+    return this.httpClient.patch<User>(`${this.url}/deactivate/${user.id}`,user,httpHeaderOption);
   }
 
-  creditUser(user:User):Observable<User>{
+  creditUser(user:User,amount: number):Observable<User>{
     const httpHeaderOption={headers:new HttpHeaders({'Content-Type':'application/json'})};
-    return this.httpClient.post<User>(`${this.url}/credit/${user.id}`,user,httpHeaderOption);
+    return this.httpClient.post<User>(`${this.url}/credit/${user.id}?amount=${amount}`,user,httpHeaderOption);
   }
 
-  debitUser(user:User):Observable<User>{
+  debitUser(user:User,amount: number):Observable<User>{
     const httpHeaderOption={headers:new HttpHeaders({'Content-Type':'application/json'})};
-    return this.httpClient.post<User>(`${this.url}/delete/${user.id}`,user,httpHeaderOption);
+    return this.httpClient.post<User>(`${this.url}/debit/${user.id}?amount=${amount}`,user,httpHeaderOption);
   }
 
   activateUser(user:User):Observable<User>{

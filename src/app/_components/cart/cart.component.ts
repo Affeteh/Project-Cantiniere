@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { QuantityIn } from 'src/app/_models/quantity-in';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { User } from 'src/app/_models/user';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-cart',
@@ -21,7 +23,7 @@ export class CartComponent implements OnInit {
   meal:Meals=new Meals("","",0,0,0,[],0,[]);
   menu:Menu=new Menu("","",0,0,0,[],[]);
   stillTime:boolean=true
-
+  user: User=new User("",0,"","","",false,"","","","",0,0,0,2);
 
   //Ici il faut remplacer le type Any par le type "OrderIn" du OrderDTOIn dans le back
   //C'est cette commande qu'on enverra en bdd
@@ -32,7 +34,8 @@ export class CartComponent implements OnInit {
 
   constructor(private cartService:BasketService,
     private router:Router,
-    private httpClient :HttpClient //sera remplacé par le service des commandes
+    private httpClient :HttpClient,//sera remplacé par le service des commandes
+    private userService: UserService
     ) { }
 
   ngOnInit(): void {
@@ -40,6 +43,19 @@ export class CartComponent implements OnInit {
     //Get the cart (persisted values)
     if(localStorage.getItem("cartItems")!==null){
       this.items=JSON.parse(localStorage.getItem("cartItems") || "[]");
+    }
+    //Get the user from the session storage
+    if(sessionStorage.getItem("userId")!==null){
+      this.newOrder.userId=parseInt(JSON.parse(sessionStorage.getItem("userId")||""))
+      this.userService.getUserById(this.newOrder.userId).subscribe(data=>this.user=data);
+    }
+
+    //Set the constraint that you can order only before 10:30 AM
+    let today = new Date() ;
+    let hours = today.getHours();
+    let minutes = today.getMinutes();
+    if(hours==10 && minutes>30 || hours>10){
+      this.stillTime=!this.stillTime;
     }
   }
 

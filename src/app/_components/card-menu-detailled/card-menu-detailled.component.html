@@ -34,41 +34,17 @@
               </li>
             </ul>
           </td>
-          <td *ngIf="stillTime" class="btnOrder">
+          <td  class="btnOrder">
             <p class="card-subtitle text-muted">{{meal.price}} €</p>
-            <button class="btnAddCart" *ngIf="(user.id==0)" data-bs-toggle="modal" data-bs-target="#noAuthenticateModal" >Commander</button>
-            <button class="btnAddCart" *ngIf="!(user.id==0)" data-bs-toggle="modal" data-bs-target="#orderModal" (click)="addToCart(meal.id)" >Commander</button>
-          </td>
-          <td *ngIf="!stillTime" class="btnOrder">
-            <div id="AlertTimeOut"></div>
-            <button type="button" class="btnAddCart" id="AlertBtn" (click)="timeOut()">Commander</button>
+            <button class="btnAddCart"  data-bs-toggle="modal" data-bs-target="#orderModal" (click)="addToCart(meal.id)" >Commander</button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!--Modal if you're not authenticate-->
-  <div class="modal " id="noAuthenticateModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="noAuthenticateTitle" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="noAuthenticateTitle">Erreur pour la commande</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Erreur de procédure.
-          Vous devez être authentifié pour pouvoir passer votre commande.
-        </div>
-        <div class="modal-footer">
-          <a routerLink="" class="btn btn-light" role="button">Se connecter</a>
-          <a routerLink="" class="btn btn-light" role="button">S'inscrire</a>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--Modal if you're authenticate-->
+
+  <!--Modal when you add something to the cart-->
   <div class="modal " id="orderModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="orderModalTitle" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
