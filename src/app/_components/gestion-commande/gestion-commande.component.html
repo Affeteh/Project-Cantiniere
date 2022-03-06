@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="gestion-commande.component.css">
+
 <body>
-
-
   <h1>Récapitulatif des commandes passées</h1>
   <table>
     <thead>
@@ -11,6 +10,7 @@
         <th>Heure de commande : 8h10</th>
         <th>Contenu de la commande : Menu 1 / Hamburger frites</th>
         <th>statut : Fini </th>
+        <!--bouton validé début-->
         <th>
           <form>
             <div class="validé">
@@ -18,13 +18,17 @@
             </div>
         </form>
        </th>
+       <!--bouton validé fin-->
+
+        <!--bouton Annuler début-->
        <th>
         <form>
           <div class="annuler">
               <input type="reset" value="Annuler">
           </div>
-      </form>
+        </form>
        </th>
+       <!--bouton annuler fin-->
     </thead>
 
     <tbody>
@@ -37,8 +41,8 @@
         <td></td>
         <td></td>
       </tr>
-      <tr>
 
+      <tr>
         <td>Julien</td>
         <td>5 Mars 2022</td>
         <td>8h50</td>
@@ -47,14 +51,17 @@
         <td></td>
         <td></td>
       </tr>
+
       <tr>
         <td>Antoine</td>
         <td>5 Mars 2022</td>
         <td>9h05</td>
         <td>Menu 3 / Steak frites</td>
         <td>En cours</td>
+        <!--bouton validé,annuler début-->
         <td></td>
         <td></td>
+        <!--bouton validé,annuler fin-->
       </tr>
     </tbody>
   </table>
