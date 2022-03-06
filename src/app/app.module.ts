@@ -21,6 +21,7 @@ import { DetailMealComponent } from './_components/detail-meal/detail-meal.compo
 import { CardMenuComponent } from './_components/card-menu/card-menu.component';
 import { CardMenuDetailledComponent } from './_components/card-menu-detailled/card-menu-detailled.component';
 import { CartComponent } from './_components/cart/cart.component';
+import { DetailledUserModalComponent } from './_components/detailled-user-modal/detailled-user-modal.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CartComponent } from './_components/cart/cart.component';
     DetailMealComponent,
     CardMenuComponent,
     CardMenuDetailledComponent,
-    CartComponent
+    CartComponent,
+    DetailledUserModalComponent
   ],
   imports: [
     BrowserModule,

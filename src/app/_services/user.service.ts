@@ -17,12 +17,12 @@ export class UserService {
     return this.httpClient.get<User[]>(`${this.url}/findall`);
   }
 
-  getUserById(id:number): Observable<User[]>{
-    return this.httpClient.get<User[]>(`${this.url}/find/${id}`);
+  getUserById(id:number): Observable<User>{
+    return this.httpClient.get<User>(`${this.url}/find/${id}`);
   }
 
-  getImgUser(id:number): Observable<Image[]>{
-    return this.httpClient.get<Image[]>(`${this.url}/findimg/${id}`);
+  getImgUser(id:number): Observable<Image>{
+    return this.httpClient.get<Image>(`${this.url}/findimg/${id}`);
   }
 
   add(user:UserIn): Observable<UserIn>{

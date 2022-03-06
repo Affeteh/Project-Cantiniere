@@ -1,0 +1,38 @@
+<div class="modal fade" tabindex="-1" id="userDetails" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="userDetailslTitle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalTitle">{{fullUser.user.firstname}} {{fullUser.user.name}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img [src]="fullUser.img" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <div class="form-check form-switch">
+                    <input *ngIf="fullUser.user.status==0" class="form-check-input" type="checkbox" role="switch" id="SwitchActivation" checked (change)="changeStatus(fullUser.user)">
+                    <input *ngIf="fullUser.user.status!=0" class="form-check-input" type="checkbox" role="switch" id="SwitchActivation">
+                    <label class="form-check-label" for="SwitchActivation">Activé</label>
+                  </div>
+                </h5>
+                <p class="card-text">Email : {{fullUser.user.email}}</p>
+                <p class="card-text">Téléphone : {{fullUser.user.phone}}</p>
+                <p class="card-text">Adresse :{{fullUser.user.address}} {{fullUser.user.postalCode}} {{fullUser.user.town}}</p>
+                <span>
+                  <p>Cagnotte: {{fullUser.user.wallet}}€</p>
+                  <button class="btn btn-outline-warning">Créditer</button>
+                  <button class="btn btn-outline-danger">Débiter</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
