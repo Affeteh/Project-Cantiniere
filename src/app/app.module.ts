@@ -22,6 +22,7 @@ import { CardMenuComponent } from './_components/card-menu/card-menu.component';
 import { CardMenuDetailledComponent } from './_components/card-menu-detailled/card-menu-detailled.component';
 import { CartComponent } from './_components/cart/cart.component';
 import { DetailledUserModalComponent } from './_components/detailled-user-modal/detailled-user-modal.component';
+import { LoginComponent } from './_components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { DetailledUserModalComponent } from './_components/detailled-user-modal/
     CardMenuComponent,
     CardMenuDetailledComponent,
     CartComponent,
-    DetailledUserModalComponent
+    DetailledUserModalComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
