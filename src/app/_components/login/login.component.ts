@@ -1,7 +1,6 @@
-import { HttpHeaderResponse, HttpResponse } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Login } from 'src/app/_models/login';
 import { User } from 'src/app/_models/user';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { UserService } from 'src/app/_services/user.service';
@@ -14,7 +13,7 @@ import { UserService } from 'src/app/_services/user.service';
 export class LoginComponent implements OnInit {
   users: User[] = [];
 
-  //@Input() user:Login = new Login("","");
+
   @Input() user={
     email:"",
     password:""
@@ -24,13 +23,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.userService.getAllUsers().subscribe(data=>
-    //   this.users = data
-    // );
   }
 
   onSubmit(form:NgForm){
-    console.log(this.user);
     let token;
     let jsonResult;
     this.authService.login(this.user).subscribe((res:HttpResponse<any>)=>{
@@ -43,7 +38,6 @@ export class LoginComponent implements OnInit {
     });
 
   }
-
 
   parseJwt(token:string){
     var base64Url = token.split('.')[1];

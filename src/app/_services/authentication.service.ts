@@ -9,9 +9,9 @@ import { User } from '../_models/user';
 })
 export class AuthenticationService {
 
-
-  private loginurl = "http://localhost:8080/lunchtime/login";
-  private logouturl = "http://localhost:8080/lunchtime/logout";
+ //By default, spring security use the endpoint /login to perform authentication
+  private loginurl = `${environment.apiUrl}/login`;
+  private logouturl = `${environment.apiUrl}/logout`;
   constructor(private httpClient: HttpClient) { }
 
 
@@ -19,12 +19,13 @@ export class AuthenticationService {
     const httpHeaderOption={
       headers:new HttpHeaders({'Content-Type':'application/json'}),
       observe:'response' as 'response'};
-    let httpHeaderResponse=new HttpHeaderResponse();
     return this.httpClient.post<HttpResponse<User>>(`${this.loginurl}`,user,httpHeaderOption);
-
     }
 
-
+    logout(user:any){
+      const httpHeaderOption={headers:new HttpHeaders({'Content-Type':'application/json'})};
+      return this.httpClient.post<HttpResponse<User>>(`${this.logouturl}`,user,httpHeaderOption);
+    }
 
 
 }
