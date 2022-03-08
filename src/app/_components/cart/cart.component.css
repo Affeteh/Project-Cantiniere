@@ -1,3 +1,4 @@
+
 .card-header,.card-footer{
   background-color: #371450;
   color:#FFD64B;
@@ -6,4 +7,21 @@
 .card-footer{
   display: flex;
   justify-content: space-evenly;
+}
+.btn-success{
+  background-color: #800080;
+}
+.btn-success:hover{
+  background-color: #640164;
+  color: #FFD64B;
+}
+.form {
+  position: relactive;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }

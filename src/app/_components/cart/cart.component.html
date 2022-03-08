@@ -1,51 +1,54 @@
-<div class="container">
-  <button class="btn" (click)="goBack()" style="font-size: large; margin-top:2%">Back</button>
+<body>
+  <div class="container">
+    <button class="btn btn-success" (click)="goBack()" style="font-size: large; margin-top:2%">Back</button>
+  <div class="form">
+    <div *ngIf="items.length == 0" style="margin-top:30%;">
+      <h2> Votre panier est vide ☹</h2>
+    </div>
 
-  <div *ngIf="items.length == 0" style="margin-top:30%;">
-    <h2> Votre panier est vide ☹</h2>
-  </div>
-
-  <div *ngIf="items.length>0" class="card" style="margin-top:20px;">
-   <div class="card-header">
-    Votre commande en cours
-   </div>
-   <div class="card-body">
-    <ul class="list-group group-flush">
-      <li *ngFor="let item of items" class="list-group-item">
-        <h5>{{item.menu.label}}</h5>
-        <div style="display: flex; justify-content: space-between;">
-           <h5>{{item.meal.label}}</h5>
-           <article>
-            <span class="counter">
-              <button class="btn btn-small" (click)="soustract(item)">-</button>
-            <span class="count-number">{{item.quantity}}</span>
-             <button class="btn btn-small" (click)="add(item)">+</button>
+    <div *ngIf="items.length>0" class="card" style="margin-top:20px;">
+    <div class="card-header">
+      Votre commande en cours
+    </div>
+    <div class="card-body">
+      <ul class="list-group group-flush">
+        <li *ngFor="let item of items" class="list-group-item">
+          <h5>{{item.menu.label}}</h5>
+          <div style="display: flex; justify-content: space-between;">
+            <h5>{{item.meal.label}}</h5>
+            <article>
+              <span class="counter">
+                <button class="btn btn-small" (click)="soustract(item)">-</button>
+              <span class="count-number">{{item.quantity}}</span>
+              <button class="btn btn-small" (click)="add(item)">+</button>
+              </span>
+              <span>
+              <button class="btn" (click)="remove(item)"><img src="../../../assets/icons/trash.svg" alt=""></button>
             </span>
-            <span>
-             <button class="btn" (click)="remove(item)"><img src="../../../assets/icons/trash.svg" alt=""></button>
-           </span>
-           </article>
-        </div>
-      </li>
-    </ul>
-    <span>
-      Le payement s'effectue auprès de la cantinière.
-    </span>
-   </div>
-   <div class="card-footer">
-     <div *ngIf="stillTime">
-      <button  class="btn btn-warning" *ngIf="!(user.id==0)" type="submit" (click)="order()">Valider</button>
-      <button class="btn btn-warning" *ngIf="(user.id==0)" data-bs-toggle="modal" data-bs-target="#noAuthenticateModal" >Commander</button>
-     </div>
-     <div *ngIf="!stillTime">
-      <button   class="btn btn-warning"  data-bs-toggle="modal" data-bs-target="#tooLateModal">
-        Valider
-      </button>
-     </div>
-    <button class="btn btn-danger" (click)="clear()">Annuler la commande</button>
-   </div>
+            </article>
+          </div>
+        </li>
+      </ul>
+      <span>
+        Le payement s'effectue auprès de la cantinière.
+      </span>
+    </div>
+    <div class="card-footer">
+      <div *ngIf="stillTime">
+        <button  class="btn btn-warning" *ngIf="!(user.id==0)" type="submit" (click)="order()">Valider</button>
+        <button class="btn btn-warning" *ngIf="(user.id==0)" data-bs-toggle="modal" data-bs-target="#noAuthenticateModal" >Commander</button>
+      </div>
+      <div *ngIf="!stillTime">
+        <button   class="btn btn-warning"  data-bs-toggle="modal" data-bs-target="#tooLateModal">
+          Valider
+        </button>
+      </div>
+      <button class="btn btn-danger" (click)="clear()">Annuler la commande</button>
+    </div>
+    </div>
   </div>
-</div>
+  </div>
+</body>
 <!--Modal if you're not authenticate-->
 <div class="modal " id="noAuthenticateModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="noAuthenticateTitle" aria-hidden="true">
   <div class="modal-dialog">

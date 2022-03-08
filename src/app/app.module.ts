@@ -23,6 +23,7 @@ import { CardMenuDetailledComponent } from './_components/card-menu-detailled/ca
 import { CartComponent } from './_components/cart/cart.component';
 import { DetailledUserModalComponent } from './_components/detailled-user-modal/detailled-user-modal.component';
 import { LoginComponent } from './_components/login/login.component';
+import { InscriptionComponent } from './_components/inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { LoginComponent } from './_components/login/login.component';
     CardMenuDetailledComponent,
     CartComponent,
     DetailledUserModalComponent,
-    LoginComponent
+    LoginComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,

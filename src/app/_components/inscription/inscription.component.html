@@ -1,1 +1,44 @@
-<p>inscription works!</p>
+<div class="login-page">
+    <div class="form">
+      <form class="login-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="form-group ">
+          <h1>Inscription   </h1>
+        <div>
+            <label for="email">Email: </label>
+            <input type="text" class="form-control" id="email" name="email" [(ngModel)]="user.email" #email="ngModel">
+        </div>
+        <div>
+            <label for="password">Password: </label>
+            <input type="text" class="form-control" id="password" name="password" [(ngModel)]="user.password" #password="ngModel">
+        </div>
+        <div class="d-inline-flex p-2">
+            <div>
+                <label for="name">name: </label>
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="user.name" #email="ngModel">
+            </div>
+            <div>
+                <label for="firstname">Firstname: </label>
+                <input type="text" class="form-control" id="firstname" name="firstname" [(ngModel)]="user.firstname" #email="ngModel">
+            </div>
+        </div>
+        <div>
+            <label for="phone">Phone: </label>
+            <input type="tel" class="form-control" id="phone" name="phone" [(ngModel)]="user.phone" #email="ngModel" >
+        </div>
+        <div>
+            <label for="town">Town: </label>
+            <input type="text" class="form-control" id="town" name="town" [(ngModel)]="user.town" #email="ngModel">
+        </div>
+        <div>
+            <label for="postalCode">Postal Code: </label>
+            <input type="text" class="form-control" id="postalCode" name="postalCode" [(ngModel)]="user.postalCode" #email="ngModel">
+        </div>
+        <div>
+            <label for="sex">Sex: </label>
+            <input type="text" class="form-control" id="sex" name="sex" [(ngModel)]="user.sex" #email="ngModel">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Valider</button>
+     </form>
+    </div>
+  </div>

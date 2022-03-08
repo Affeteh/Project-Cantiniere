@@ -1,13 +1,21 @@
 <app-add-menu-modal></app-add-menu-modal>
 <app-delete-menu-modal *ngIf="toDelete" [menuId]="menuId" [menuLabel]="label"></app-delete-menu-modal>
 <app-edit-menu-modal *ngIf="openEdit" [menu]="menuEdit"> </app-edit-menu-modal>
+<title>TEST</title>
 <!-- Button trigger add menu modal -->
 <div class="container">
-  <button type="button" class="btn btn-outline-warning btn-md" style="border-radius:48%" data-bs-toggle="modal" id="addButton" data-bs-target="#addMenuModal">
-    <img src="../../../assets/icons/add.svg"id="addImg" alt="">
-  </button>
+  <div>
+    <h1>Gestionnaire des menu</h1>
+  </div>
+  <hr>
   <!--Menus -->
   <div class="row">
+    <div class="col-md-1">
+    <button type="button left-side" class="btn btn-outline-warning btn-md" style="border-radius:48%" data-bs-toggle="modal" id="addButton" data-bs-target="#addMenuModal">
+      <img src="../../../assets/icons/add.svg"id="addImg" alt="">
+      
+    </button>
+    </div>
     <div class="col-md-10" id="menuTable">
       <table class="table table-hover">
         <thead>
@@ -35,6 +43,7 @@
       </table>
       <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshMenus()"></ngb-pagination>
     </div>
+    <hr>
     <div class="col-md-6" *ngIf="shownDetail">
       <app-detail-menu [menuId]="menuId" [isOpen]="shownDetail"></app-detail-menu>
     </div>
