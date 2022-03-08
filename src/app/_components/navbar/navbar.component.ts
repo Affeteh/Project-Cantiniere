@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
 
   user:User = new User("",0,"","","",false,"","","","",0,0,0,0);
 
-  constructor(private userServie:UserService, private auhtService: AuthenticationService,private router: Router) { }
+  constructor(private userService:UserService, private auhtService: AuthenticationService,private router: Router) { }
 
   ngOnInit(): void {
 
@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
     let id=(sessionStorage.getItem('userId')||"");
     console.log(id);
     if(id!=null){
-      this.userServie.getUserById(parseInt(id)).subscribe(data=>this.user=data);
+      this.userService.getUserById(parseInt(id)).subscribe(data=>this.user=data);
     }
   }
 
