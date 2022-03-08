@@ -17,7 +17,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let token = JSON.parse(sessionStorage.getItem('token')||"");
     let id=(sessionStorage.getItem('userId')||"");
     console.log(id);
     if(id!=null){
@@ -29,8 +28,7 @@ export class NavbarComponent implements OnInit {
   logout(){
     this.auhtService.logout(this.user).subscribe(_=>{
         sessionStorage.removeItem('userId');
-        //document.location.reload()
-        this.router.navigateByUrl("/");
+        this.router.navigateByUrl("").then(_=>document.location.reload());
     })
   }
 }

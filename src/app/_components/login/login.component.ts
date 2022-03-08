@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('userId',JSON.stringify(jsonResult.user.id));
         sessionStorage.setItem('token',JSON.stringify(token));
       }
-      this.router.navigateByUrl("");
+      this.router.navigateByUrl("").then(_=>document.location.reload());
     });
 
   }
