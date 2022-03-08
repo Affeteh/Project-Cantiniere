@@ -10,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AddMenuModalComponent } from './_components/add-menu-modal/add-menu-modal.component';
 import { DeleteMenuModalComponent } from './_components/delete-menu-modal/delete-menu-modal.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DetailMenuComponent } from './_components/detail-menu/detail-menu.component';
 import { EditMenuModalComponent } from './_components/edit-menu-modal/edit-menu-modal.component';
 import { GestionnaireMealsComponent } from './_components/gestionnaire-meals/gestionnaire-meals.component';
@@ -27,6 +26,8 @@ import { InscriptionComponent } from './_components/inscription/inscription.comp
 import { HeaderComponent } from './_components/header/header.component';
 import { FooterComponent } from './_components/footer/footer.component';
 import { NavbarComponent } from './_components/navbar/navbar.component';
+import { GestionCommandeComponent } from './_components/gestion-commande/gestion-commande.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap' ;
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { NavbarComponent } from './_components/navbar/navbar.component';
     InscriptionComponent,
     HeaderComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    GestionCommandeComponent
   ],
   imports: [
     BrowserModule,
