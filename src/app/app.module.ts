@@ -23,6 +23,9 @@ import { CardMenuDetailledComponent } from './_components/card-menu-detailled/ca
 import { CartComponent } from './_components/cart/cart.component';
 import { DetailledUserModalComponent } from './_components/detailled-user-modal/detailled-user-modal.component';
 import { LoginComponent } from './_components/login/login.component';
+import { HeaderComponent } from './_components/header/header.component';
+import { FooterComponent } from './_components/footer/footer.component';
+import { NavbarComponent } from './_components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { LoginComponent } from './_components/login/login.component';
     CardMenuDetailledComponent,
     CartComponent,
     DetailledUserModalComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent,
+    FooterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
