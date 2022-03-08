@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { CardMenuComponent } from './_components/card-menu/card-menu.component';
 import { CartComponent } from './_components/cart/cart.component';
 import { GestionUserComponent } from './_components/gestion-user/gestion-user.component';
-import { GestionnaireMenuComponent } from './_components/gestionnaire-menu/gestionnaire-menu.component';
 import { InscriptionComponent } from './_components/inscription/inscription.component';
+import { GestionnaireMealsComponent } from './_components/gestionnaire-meals/gestionnaire-meals.component';
+import { GestionnaireMenuComponent } from './_components/gestionnaire-menu/gestionnaire-menu.component';
 import { LoginComponent } from './_components/login/login.component';
+import { ProfilComponent } from './_components/profil/profil.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -14,7 +15,9 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'users',component:GestionUserComponent},
   {path:'inscription',component:InscriptionComponent},
-  {path:'WIP',component:GestionnaireMenuComponent}
+  {path:'profil',component:ProfilComponent},
+  {path:'menus',component:GestionnaireMenuComponent},
+  {path:'plats',component:GestionnaireMealsComponent}
 ];
 
 @NgModule({

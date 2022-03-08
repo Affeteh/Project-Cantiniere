@@ -24,6 +24,9 @@ import { CartComponent } from './_components/cart/cart.component';
 import { DetailledUserModalComponent } from './_components/detailled-user-modal/detailled-user-modal.component';
 import { LoginComponent } from './_components/login/login.component';
 import { InscriptionComponent } from './_components/inscription/inscription.component';
+import { HeaderComponent } from './_components/header/header.component';
+import { FooterComponent } from './_components/footer/footer.component';
+import { NavbarComponent } from './_components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { InscriptionComponent } from './_components/inscription/inscription.comp
     CartComponent,
     DetailledUserModalComponent,
     LoginComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    HeaderComponent,
+    FooterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

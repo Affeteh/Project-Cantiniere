@@ -1,85 +1,80 @@
-<html>
-    <header>
-        <h1>DZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ</h1>
-    </header>
-  <body><div class="area"></div><nav class="main-menu">
-            <ul>
-                <li>
-                    <a href="/profil">
-                        <span class="nav-text">
-                            <img class="imglogo" src="/assets/icons/img_avatar.png" alt="Avatar">
-                            Name.exe
-                        </span>
-                    </a>
-                    
-                </li>
-                <hr>
-                <li>
-                    <a href="/menu">
-                        <i class="fa fa-home fa-2x"></i>
-                        <span class="nav-text">
-                            Menu
-                        </span>
-                    </a>
-                  
-                </li>
-                <li>
-                    <a href="">
-                        <i class="fa fa-home fa-2x"></i>
-                        <span class="nav-text">
-                            crédité
-                        </span>
-                    </a>
-                  
-                </li>
-            </ul>
+<div>
+  <nav class="main-menu">
+    <ul>
+      <li>
+          <a href="profil">
+              <span class="nav-text">
+                  <img class="imglogo" src="/assets/icons/img_avatar.png" alt="Avatar">
+                  {{user.firstname}} {{user.name}}
+              </span>
+          </a>
 
-            <ul class="logout">
-                <li>
-                   <a href="#">
-                         <i class="fa fa-power-off fa-2x"></i>
-                        <span class="nav-text">
-                            Logout
-                        </span>
-                    </a>
-                </li>  
-            </ul>
-        </nav>
-        <section class="content">
-            TEEEEEEEEEEEEEST
-          </section>
-  </body>
+      </li>
+      <hr>
+      <li>
+          <a routerLink="panier">
+              <i class="fa fa-home fa-2x"></i>
+              <span class="nav-text">
+                  Panier
+              </span>
+          </a>
+
+      </li>
+      <li>
+          <a routerLink="">
+              <i class="fa fa-home fa-2x"></i>
+              <span class="nav-text">
+                  Accueil
+              </span>
+          </a>
+      </li>
+      <li *ngIf="user.isLunchLady">
+        <a routerLink="menu">
+            <i class="fa fa-home fa-2x"></i>
+            <span class="nav-text">
+                Menu
+            </span>
+        </a>
+    </li>
+    <li *ngIf="user.isLunchLady">
+      <a routerLink="plats">
+          <i class="fa fa-home fa-2x"></i>
+          <span class="nav-text">
+              Plat
+          </span>
+      </a>
+  </li>
+  <li *ngIf="user.isLunchLady">
+    <a routerLink="user">
+        <i class="fa fa-home fa-2x"></i>
+        <span class="nav-text">
+            Utilisateurs
+        </span>
+    </a>
+</li>
+  </ul>
+
+  <ul class="logout" *ngIf="user.id!=0">
+      <li>
+         <a (click)="logout()">
+               <i class="fa fa-power-off fa-2x"></i>
+              <span class="nav-text">
+                  Logout
+              </span>
+          </a>
+      </li>
+  </ul>
+  <ul class="logout" *ngIf="user.id==0">
+    <li>
+       <a routerLink="login">
+             <i class="fa fa-power-off fa-2x"></i>
+            <span class="nav-text">
+              Login
+            </span>
+        </a>
+    </li>
+</ul>
+</nav>
+</div>
 
 
-
-
-
-  <footer>
-  <footer class="site-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 col-md-6">
-          <h6>Nous ?</h6>
-          </div>
-
-        <div class="col-xs-6 col-md-3">
-          <h6>Collaborateur ?</h6>
-
-        </div>
-
-        <div class="col-xs-6 col-md-3">
-          <h6>Année ?</h6>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-sm-6 col-xs-12">
-          
-        </div>
-
-      </div>
-    </div>
-</footer>
-  </footer>
-    </html> 
