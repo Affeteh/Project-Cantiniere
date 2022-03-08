@@ -17,7 +17,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let id=JSON.parse(sessionStorage.getItem('userId')||"");
+    let token = JSON.parse(sessionStorage.getItem('token')||"");
+    let id=(sessionStorage.getItem('userId')||"");
+    console.log(id);
     if(id!=null){
       this.userServie.getUserById(parseInt(id)).subscribe(data=>this.user=data);
     }

@@ -26,7 +26,8 @@ overflow:visible;
 }
 
 .main-menu {
-background:#212121;
+background-color: #371450;
+color:#FFD64B;
 border-right:1px solid #e5e5e5;
 position:absolute;
 top:0;

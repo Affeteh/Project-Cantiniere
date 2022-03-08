@@ -1,6 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/_models/user';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { UserService } from 'src/app/_services/user.service';
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
     password:""
   }
 
-  constructor(private userService:  UserService, private authService: AuthenticationService) {}
+  constructor(private userService:  UserService, private authService: AuthenticationService,private router: Router) {}
 
   ngOnInit(): void {
 
@@ -33,8 +34,9 @@ export class LoginComponent implements OnInit {
       if(token!=null){
         jsonResult=this.parseJwt(token);
         sessionStorage.setItem('userId',JSON.stringify(jsonResult.user.id));
+        sessionStorage.setItem('token',JSON.stringify(token));
       }
-
+      this.router.navigateByUrl("");
     });
 
   }
