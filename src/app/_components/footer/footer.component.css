@@ -5,7 +5,8 @@
   padding:45px 0 30px;
   font-size:15px;
   line-height:24px;
-  position:absolute;
+  z-index: 1;
+  position:fixed;
   bottom: 0;
   width:100%;
   padding-top:50px;
