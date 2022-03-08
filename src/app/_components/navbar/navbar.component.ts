@@ -18,16 +18,16 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
 
     let id=(sessionStorage.getItem('userId')||"");
-    console.log(id);
     if(id!=null){
-      this.userService.getUserById(parseInt(id)).subscribe(data=>this.user=data);
+      this.userService.getUserById(parseInt(id)).subscribe(data=>
+        this.user=data);
     }
   }
 
 
   logout(){
     this.auhtService.logout(this.user).subscribe(_=>{
-        sessionStorage.removeItem('userId');
+        sessionStorage.clear();
         this.router.navigateByUrl("").then(_=>document.location.reload());
     })
   }

@@ -28,6 +28,7 @@ import { FooterComponent } from './_components/footer/footer.component';
 import { NavbarComponent } from './_components/navbar/navbar.component';
 import { GestionCommandeComponent } from './_components/gestion-commande/gestion-commande.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap' ;
+import { tokenInterceptorProviders } from './_services/token-http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap' ;
     FormsModule,
     NgbModule
   ],
-  providers: [],
+  providers: [tokenInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
