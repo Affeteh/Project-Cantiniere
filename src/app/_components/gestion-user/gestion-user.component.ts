@@ -10,7 +10,8 @@ import { UserService } from 'src/app/_services/user.service';
 export class GestionUserComponent implements OnInit {
 
   users: User[]=[];
-  usersBis:any[]=[]
+  usersBis:any[]=[];
+  user:any;
   userDetail:User=new User("",0,"","","",false,"","","","",0,0,0,0);
 
   page: number=0;
@@ -29,12 +30,13 @@ export class GestionUserComponent implements OnInit {
 
       for(let user of this.users){
         this.userService.getImgUser(user.id).subscribe(img=>{
-          this.usersBis.push({
+          this.user={
             id:user.id,
             name:user.name,
             firstname:user.firstname,
             img: img.image64
-          })
+          };
+          this.usersBis.push(this.user);
         })
       }
     });
@@ -50,4 +52,19 @@ export class GestionUserComponent implements OnInit {
     this.open=!this.open;
   }
 
+  filterUser(){
+    let inputValue = document.querySelector<HTMLInputElement>('#search')?.value;
+    let index = this.users.findIndex(x=> x.name.toLowerCase()===inputValue?.toLowerCase());
+    this.usersBis=[];
+    this.userService.getImgUser(this.users[index].id).subscribe(img=>{
+      this.user={
+        id:this.users[index].id,
+        name:this.users[index].name,
+        firstname:this.users[index].firstname,
+        img: img.image64
+      };
+      this.usersBis.push(this.user);
+    })
+  }
 }
+

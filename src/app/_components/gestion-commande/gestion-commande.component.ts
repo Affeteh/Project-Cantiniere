@@ -47,7 +47,6 @@ export class GestionCommandeComponent implements OnInit {
   orderByuser(){
     let inputValue = document.querySelector<HTMLInputElement>('#search')?.value;
     let index = this.users.findIndex(x=> x.name.toLowerCase()===inputValue?.toLowerCase());
-    console.log(index);
     this.orderService.getallOrderForUser(this.users[index].id).subscribe(result=>this.orders=result);
 
   }
