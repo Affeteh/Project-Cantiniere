@@ -8,6 +8,7 @@ import { GestionnaireMealsComponent } from './_components/gestionnaire-meals/ges
 import { GestionnaireMenuComponent } from './_components/gestionnaire-menu/gestionnaire-menu.component';
 import { LoginComponent } from './_components/login/login.component';
 import { ProfilComponent } from './_components/profil/profil.component';
+import { GestionCommandeComponent } from './_components/gestion-commande/gestion-commande.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:'inscription',component:InscriptionComponent},
   {path:'profil',component:ProfilComponent},
   {path:'menus',component:GestionnaireMenuComponent},
-  {path:'plats',component:GestionnaireMealsComponent}
+  {path:'plats',component:GestionnaireMealsComponent},
+  {path:'commandes',component:GestionCommandeComponent}
 ];
 
 @NgModule({

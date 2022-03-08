@@ -29,7 +29,7 @@
           </a>
       </li>
       <li *ngIf="user.isLunchLady">
-        <a routerLink="menu">
+        <a routerLink="menus">
             <i class="fa fa-home fa-2x"></i>
             <span class="nav-text">
                 Menu
@@ -45,12 +45,20 @@
       </a>
   </li>
   <li *ngIf="user.isLunchLady">
-    <a routerLink="user">
+    <a routerLink="users">
         <i class="fa fa-home fa-2x"></i>
         <span class="nav-text">
             Utilisateurs
         </span>
     </a>
+</li>
+<li *ngIf="user.isLunchLady">
+  <a routerLink="commandes">
+      <i class="fa fa-home fa-2x"></i>
+      <span class="nav-text">
+          Commandes
+      </span>
+  </a>
 </li>
   </ul>
 

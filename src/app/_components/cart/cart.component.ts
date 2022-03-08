@@ -100,8 +100,7 @@ export class CartComponent implements OnInit {
     this.newOrder.quantity=this.orderItems;
     //A changer pour la methode qui sera dans le services order !
     // let url = environment.apiUrl+"/order/add";
-    // const httpHeaderOption={headers:new HttpHeaders({'Content-Type':'application/json'})};
-    // this.httpClient.put(url,this.newOrder,httpHeaderOption).subscribe(data=>this.newOrder=data);
+    // 
     this.clear()
   }
 

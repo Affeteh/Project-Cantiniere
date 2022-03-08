@@ -1,68 +1,44 @@
-<link rel="stylesheet" href="gestion-commande.component.css">
+<h1>Récapitulatif des commandes passées</h1>
 
-<body>
-  <h1>Récapitulatif des commandes passées</h1>
+<div>
+  <input id="search" type="text" placeholder="Entrez le nom ...">
+  <button class="btn" (click)="orderByuser()">🔍</button>
+</div>
+
+<div>
   <table>
     <thead>
       <tr>
-        <th>chauvun Lucas</th>
-        <th>Date de création : 05/03/2022</th>
-        <th>Heure de commande : 8h10</th>
-        <th>Contenu de la commande : Menu 1 / Hamburger frites</th>
-        <th>statut : Fini </th>
+        <th>Nom Prénom</th>
+        <th>Date de création </th>
+        <th>Heure de commande </th>
+        <th>Contenu de la commande</th>
+        <th>statut</th>
         <!--bouton validé début-->
         <th>
-          <form>
-            <div class="validé">
-                <input type="submit" value="Validé">
-            </div>
-        </form>
+          Actions
        </th>
-       <!--bouton validé fin-->
-
-        <!--bouton Annuler début-->
-       <th>
-        <form>
-          <div class="annuler">
-              <input type="reset" value="Annuler">
-          </div>
-        </form>
-       </th>
-       <!--bouton annuler fin-->
     </thead>
 
     <tbody>
-      <tr>
-        <td>Anais</td>
-        <td>5 Mars 2022</td>
-        <td>8h30</td>
-        <td>Menu 1 / Hamburger frites</td>
-        <td>En cours</td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>Julien</td>
-        <td>5 Mars 2022</td>
-        <td>8h50</td>
-        <td>Menu 4 / Poisson Haricots</td>
-        <td>En cours</td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>Antoine</td>
-        <td>5 Mars 2022</td>
-        <td>9h05</td>
-        <td>Menu 3 / Steak frites</td>
-        <td>En cours</td>
-        <!--bouton validé,annuler début-->
-        <td></td>
-        <td></td>
-        <!--bouton validé,annuler fin-->
+      <tr *ngFor="let order of orders | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+        <td>{{order.user.name}} {{order.user.firstname}}</td>
+        <td>{{order.creationDate}}</td>
+        <td>{{order.creationTime}}</td>
+        <td>
+          <span  *ngFor="let quantity of order.quantity">
+            <label *ngIf="quantity.meal">{{quantity.meal.label}}</label>
+            <label *ngIf="quantity.menu">{{quantity.menu.label}}</label>
+          </span>
+        </td>
+        <td>{{order.status}}</td>
+        <td>
+          <button class="btn" (click)="validate(order.id)">Valider</button>
+          <button class="btn btn-danger" (click)="cancel(order.id)">Annuler</button>
+        </td>
       </tr>
     </tbody>
   </table>
-</body>
+  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshOrders()"></ngb-pagination>
+</div>
+
