@@ -1,0 +1,19 @@
+*****************************************************************************
+*     Projet par : Segolene DEMOLIN | Matthieu CHAUVIN | Julien PEIXOTO     *
+*****************************************************************************
+
+**** Guide d'installation : ****
+
+1 - Git clone https://github.com/Affeteh/Project-Cantiniere.git
+2 - npm i
+3 - npm i @ng-bootstrap/ng-bootstrap --force
+4 - ng add @angular/localize
+
+**** Crédit ****
+
+ASTON-ECOLE 2021-2022
+
+*****************************************************************************
+*     Projet par : Segolene DEMOLIN | Matthieu CHAUVIN | Julien PEIXOTO     *
+*****************************************************************************
+
