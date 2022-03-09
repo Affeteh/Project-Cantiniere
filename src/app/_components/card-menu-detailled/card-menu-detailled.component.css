@@ -2,13 +2,20 @@
   margin: auto;
   width: 70%;
 }
-
+.bgbg{
+  margin-top: 15px;
+  background-color: #FFE787;
+  width: 850px;
+  border-radius: 50px;
+}
+.bgradius{
+  border-radius: 10px;
+}
 .card-head{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-
 ul{
   list-style-type: none;
   margin: 0;
@@ -18,7 +25,10 @@ ul{
 label{
   padding-left: 10px;
 }
-
+.txt{
+  text-decoration: underline;
+  font-weight: bold;
+}
 #ingredients{
   display: inline-block;
 }
@@ -28,15 +38,15 @@ img{
   width: 30px;
 }
 table{
-  color:#371450;
-  --bs-table-striped-color:#371450;
-  --bs-table-active-color: #371450;
+  color:#1E152A;
+  --bs-table-striped-color:#1E152A;
+  --bs-table-active-color: #1E152A;
 }
 .btnOrder{
   text-align: center;
 }
-.btnAddCart{
-  background-color: #371450;
-  color:#FFD64B;
+.btn-warning{
+  background-color: #1E152A;
+  color:#FFE787;
 }
 

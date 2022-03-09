@@ -3,7 +3,15 @@ body {
   color: #666;
   font: 14px/24px "Open Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", Sans-Serif;
 }
-
+.centerbg{
+  text-align: center;
+}
+.bgbg{
+  margin-left: 100px;
+}
+.bgradius{
+  margin-bottom: -50px;
+}
 h1
 {
 text-align: center;

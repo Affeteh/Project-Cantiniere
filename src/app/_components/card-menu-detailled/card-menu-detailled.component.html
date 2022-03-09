@@ -1,4 +1,5 @@
 <div *ngIf="show" class="card border-0 bg-transparent">
+  <div class="bgbg">
   <div class="card-body">
     <div class="card-head" >
       <span>
@@ -23,26 +24,26 @@
       <tbody>
         <tr *ngFor="let meal of meals">
           <td>
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush bgradius">
               <li id="" class="list-group-item">
                 <img [src]="meal.img" alt="">
                 <label for="imgMeal">{{meal.label}}</label>
-                <p class="card-subtitle text-muted">Ingredients:</p>
+                <p class="card-subtitle text-muted txt">Ingredients:</p>
                 <ul>
-                  <li id="ingredients" *ngFor="let ingredient of meal.ingredients">{{ingredient.label}}, </li>
+                  <li id="ingredients" *ngFor="let ingredient of meal.ingredients">{{ingredient.label}},</li>
                 </ul>
               </li>
             </ul>
           </td>
           <td  class="btnOrder">
-            <p class="card-subtitle text-muted">{{meal.price}} €</p>
-            <button class="btnAddCart"  data-bs-toggle="modal" data-bs-target="#orderModal" (click)="addToCart(meal.id)" >Commander</button>
+            <p class="card-subtitle text-muted txt">{{meal.price}} €</p>
+            <button class="btn btn-warning"  data-bs-toggle="modal" data-bs-target="#orderModal" (click)="addToCart(meal.id)" >Commander</button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-
+</div>
 
   <!--Modal when you add something to the cart-->
   <div class="modal " id="orderModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="orderModalTitle" aria-hidden="true">

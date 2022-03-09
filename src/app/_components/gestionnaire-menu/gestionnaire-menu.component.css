@@ -18,3 +18,34 @@ width: 20px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+
+.headerth{
+  background-color: #640164;
+  color: #FFD64B;
+}
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid purple;
+}
+
+thead th:nth-child(1) {
+  width: 30%;
+}
+
+thead th:nth-child(2) {
+  width: 20%;
+}
+
+thead th:nth-child(3) {
+  width: 15%;
+}
+
+thead th:nth-child(4) {
+  width: 35%;
+}
+
+th, td {
+  padding: 20px;
+}

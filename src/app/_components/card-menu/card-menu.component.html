@@ -6,8 +6,8 @@
     </div>
     <ul id="listMeal" class="list-group  bg-transparent">
       <li *ngFor="let meal of meals" class="list-group-item  bg-transparent">
-        <img [src]="meal.img" alt="" (click)="showDetail(menu.id,meal.id)">
-        <label for="imgMeal">{{meal.label}}</label>
+        <img  class="imgformat" [src]="meal.img" alt="" (click)="showDetail(menu.id,meal.id)">
+        <label class="" for="imgMeal">{{meal.label}}</label>
       </li>
     </ul>
   </div>

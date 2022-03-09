@@ -6,21 +6,22 @@
     <input id="search" type="text" placeholder="Entrez le nom..">
     <button class="btn" (click)="filterUser()">🔍</button>
   </div>
-
-  <div class="grid-container" >
-    <div class="card-group">
+<div class="bgbg">
+  <div class="grid-container bgbg" >
+    <div class="card-group bgbg">
       <div *ngFor="let user of usersBis | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize" class="card border-warning">
-        <img [src]="user.img"  class="card-img-top" alt="">
-        <div class="card-body">
-          <h5 class="card-title">{{user.firstname}} {{user.name}}</h5>
+        <img [src]="user.img"  class="card-img-top bgbg" alt="">
+        <div class="card-body bgbg">
+          <h5 class="card-title bgbg">{{user.firstname}} {{user.name}}</h5>
         </div>
         <div class="card-footer bg-warning">
-          <button class="btn" data-bs-toggle="modal" data-bs-target="#userDetails" (mouseover)="setUser(user.id)"><img src="../../../assets/icons/details.svg" alt="">Détails</button>
+          <button class="btn bgbg" data-bs-toggle="modal" data-bs-target="#userDetails" (mouseover)="setUser(user.id)"><img src="../../../assets/icons/details.svg" alt="">Détails</button>
         </div>
         <app-detailled-user-modal *ngIf="open" [user]="userDetail"></app-detailled-user-modal>
       </div>
     </div>
   </div>
   <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshUsers()"></ngb-pagination>
+</div>
 </div>
 

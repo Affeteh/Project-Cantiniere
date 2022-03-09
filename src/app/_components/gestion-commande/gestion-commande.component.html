@@ -1,13 +1,13 @@
 <h1>Récapitulatif des commandes passées</h1>
 
-<div>
+<div class="centerbg">
   <input id="search" type="text" placeholder="Entrez le nom ...">
   <button class="btn" (click)="orderByuser()">🔍</button>
 </div>
 
-<div>
-  <table>
-    <thead>
+<div class="bgradius">
+  <table class="bgradius">
+    <thead class="bgradius">
       <tr>
         <th>Nom Prénom</th>
         <th>Date de création </th>
@@ -39,6 +39,7 @@
       </tr>
     </tbody>
   </table>
-  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshOrders()"></ngb-pagination>
+  <div class="bgbg">  <ngb-pagination class="bgbg" [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshOrders()"></ngb-pagination> </div>
+
 </div>
 

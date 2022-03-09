@@ -1,7 +1,18 @@
 <div>
   <nav class="main-menu">
-    <ul>
-      <li>
+    <ul *ngIf="user.id==0">
+        <li>
+            <a routerLink="login">
+                <span class="nav-text">
+                    <img class="imglogo" src="/assets/icons/img_avatar.png" alt="Avatar">
+                    Connecter vous
+                </span>
+            </a>
+  
+        </li>
+        </ul>
+    <ul *ngIf="user.id==1">
+      <li >
           <a href="profil">
               <span class="nav-text">
                   <img class="imglogo" src="/assets/icons/img_avatar.png" alt="Avatar">
@@ -10,10 +21,12 @@
           </a>
 
       </li>
+      </ul>
+      <ul>
       <hr>
       <li>
           <a routerLink="panier">
-              <i class="fa fa-home fa-2x"></i>
+              <i class="fa fa-home fa-2x">🛒</i>
               <span class="nav-text">
                   Panier
               </span>
@@ -22,7 +35,7 @@
       </li>
       <li>
           <a routerLink="">
-              <i class="fa fa-home fa-2x"></i>
+              <i class="fa fa-home fa-2x">🏠</i>
               <span class="nav-text">
                   Accueil
               </span>
@@ -30,7 +43,7 @@
       </li>
       <li *ngIf="user.isLunchLady">
         <a routerLink="menus">
-            <i class="fa fa-home fa-2x"></i>
+            <i class="fa fa-home fa-2x">🍔</i>
             <span class="nav-text">
                 Menu
             </span>
@@ -38,7 +51,7 @@
     </li>
     <li *ngIf="user.isLunchLady">
       <a routerLink="plats">
-          <i class="fa fa-home fa-2x"></i>
+          <i class="fa fa-home fa-2x">🥘</i>
           <span class="nav-text">
               Plat
           </span>
@@ -46,7 +59,7 @@
   </li>
   <li *ngIf="user.isLunchLady">
     <a routerLink="users">
-        <i class="fa fa-home fa-2x"></i>
+        <i class="fa fa-home fa-2x">👤</i>
         <span class="nav-text">
             Utilisateurs
         </span>
@@ -54,7 +67,7 @@
 </li>
 <li *ngIf="user.isLunchLady">
   <a routerLink="commandes">
-      <i class="fa fa-home fa-2x"></i>
+      <i class="fa fa-home fa-2x">🖲️</i>
       <span class="nav-text">
           Commandes
       </span>
@@ -65,7 +78,7 @@
   <ul class="logout" *ngIf="user.id!=0">
       <li>
          <a (click)="logout()">
-               <i class="fa fa-power-off fa-2x"></i>
+               <i class="fa fa-power-off fa-2x">❌</i>
               <span class="nav-text">
                   Logout
               </span>
@@ -75,7 +88,7 @@
   <ul class="logout" *ngIf="user.id==0">
     <li>
        <a routerLink="login">
-             <i class="fa fa-power-off fa-2x"></i>
+             <i class="fa fa-power-off fa-2x">🚪</i>
             <span class="nav-text">
               Login
             </span>

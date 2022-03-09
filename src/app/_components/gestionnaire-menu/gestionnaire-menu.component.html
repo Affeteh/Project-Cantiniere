@@ -19,10 +19,10 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>Label</th>
-            <th>Weeks</th>
-            <th>price</th>
-            <th>options</th>
+            <th class="headerth">Label</th>
+            <th class="headerth">Weeks</th>
+            <th class="headerth">price</th>
+            <th class="headerth">options</th>
           </tr>
         </thead>
         <tbody>
@@ -42,8 +42,7 @@
       </table>
       <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshMenus()"></ngb-pagination>
     </div>
-    <hr>
-    <div class="col-md-6" *ngIf="shownDetail">
+    <div class="col-md-5" *ngIf="shownDetail">
       <app-detail-menu [menuId]="menuId" [isOpen]="shownDetail"></app-detail-menu>
     </div>
   </div>

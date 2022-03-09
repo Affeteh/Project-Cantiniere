@@ -1,16 +1,16 @@
-<span class="topPage">
-  <h2>Bienvenue sur Stone-Lunchtime 🍽</h2>
-  <button routerLink="/panier" class="btn btn-warning">🛒Voir le panier</button>
-</span>
 
+<h2>🍽 Bienvenue sur Stone-Lunchtime 🍽</h2>
+<hr>
 <div class="container">
   <div class="row">
+    <button routerLink="/panier" class="btn btn-warning">🛒Voir le panier</button>
+    <div class="firstSlide">
+      <h4>Un petit creux ? Découvre les menus disponibles cette semaine</h4>
+    </div>
+    <div class="bgbg">
     <div id="carouselMenus" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="3000">
-          <div class="firstSlide">
-            <h4>Un petit creux? Découvre les menus disponibles cette semaine  ⇨</h4>
-          </div>
         </div>
         <div id="divItem" *ngFor="let menu of menusWeek" class="carousel-item" data-bs-interval="5000">
           <app-card-menu [menuId]="menu.id" (click)="showDetails(menu.id)"> </app-card-menu>
@@ -18,8 +18,9 @@
       </div>
     </div>
   </div>
+  </div>
   <div class="row" *ngIf="show">
-    <app-card-menu-detailled [menuId]="menuId" [isShowned]="show" (newShownedValue)="changeShowValue($event)" ></app-card-menu-detailled>
+    <app-card-menu-detailled  [menuId]="menuId" [isShowned]="show" (newShownedValue)="changeShowValue($event)" ></app-card-menu-detailled>
   </div>
 </div>
 

@@ -17,10 +17,10 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>Label</th>
-            <th>Weeks</th>
-            <th>price</th>
-            <th>options</th>
+            <th class="headerth">Label</th>
+            <th class="headerth">Weeks</th>
+            <th class="headerth">price</th>
+            <th class="headerth">options</th>
           </tr>
         </thead>
         <tbody>
@@ -38,9 +38,10 @@
           </tr>
         </tbody>
       </table>
-      <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshMeals()"></ngb-pagination>
+      <div class="indexz">
+      <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshMeals()"></ngb-pagination></div>
     </div>
-    <div class="col-md-6" *ngIf="shownDetail">
+    <div class="col-md-5" *ngIf="shownDetail">
       <app-detail-meal [mealId]="mealId" [isOpen]="shownDetail"></app-detail-meal>
     </div>
   </div>
