@@ -1,3 +1,4 @@
+
 <div class="login-page">
     <div class="form">
       <form class="login-form" (ngSubmit)="onSubmit(f)" #f="ngForm">
@@ -7,7 +8,10 @@
         <label for="password">Mot de passe: </label>
         <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" #password="ngModel">
       </div>
-      <button type="submit" class="btn btn-primary">Valider</button>  
+      <div class="buttonLI">
+      <button  type="submit" class="btn btn-primary ">Valider</button>  
+      <button  class="btn btn-primary atchoum"> <a routerLink="/inscription"> Inscription </a></button> 
+      </div> 
      </form>
     </div>
   </div>

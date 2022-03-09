@@ -4,7 +4,9 @@
     padding: 8% 0 0;
     margin: auto;
   }
-  
+  .bgbg{
+    margin-left: 10px;
+  }
   .buttonLI{
       display: flex;
   }
